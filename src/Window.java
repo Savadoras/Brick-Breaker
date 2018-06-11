@@ -19,6 +19,7 @@ public class Window extends Canvas {
         frame.setResizable(false);
         frame.setVisible(true);
 
+
         game.start();
     }
 }

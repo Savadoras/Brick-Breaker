@@ -3,10 +3,10 @@ import java.awt.event.KeyEvent;
 
 public class KeyInput extends KeyAdapter {
 
-    private Handler handler;
+    private Handler hendler;
 
     public KeyInput(Handler handler) {
-        this.handler = handler;
+        this.hendler = handler;
     }
 
     @Override
@@ -15,12 +15,13 @@ public class KeyInput extends KeyAdapter {
 
         int key = e.getKeyCode();
 
-        for (int i = 0; i < handler.object.size(); i++) {
-            GameObject tempObject = handler.object.get(i);
+        for (int i = 0; i < hendler.object.size(); i++) {
+            GameObject tempObject = hendler.object.get(i);
 
             if (tempObject.getId() == ID.Player) {
                 if (key == KeyEvent.VK_LEFT) tempObject.setVelX(-10);
                 if (key == KeyEvent.VK_RIGHT) tempObject.setVelX(10);
+
             }
 
             if (tempObject.getId() == ID.Ball) {
@@ -32,6 +33,8 @@ public class KeyInput extends KeyAdapter {
                     }
             }
         }
+
+
     }
 
     @Override
@@ -40,14 +43,15 @@ public class KeyInput extends KeyAdapter {
 
         int key = e.getKeyCode();
 
-        for (int i = 0; i < handler.object.size(); i++) {
-            GameObject tempObject = handler.object.get(i);
+        for (int i = 0; i < hendler.object.size(); i++) {
+            GameObject tempObject = hendler.object.get(i);
 
             if (tempObject.getId() == ID.Player) {
                 if (key == KeyEvent.VK_LEFT && tempObject.getVelX() < 0) tempObject.setVelX(0);
                 if (key == KeyEvent.VK_RIGHT && tempObject.getVelX() > 0) tempObject.setVelX(0);
 
             }
+
         }
     }
 }
