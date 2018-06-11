@@ -12,7 +12,6 @@ public class Ball extends GameObject {
         this.radius = radius;
 
         velX = velY = 0;
-
     }
 
     @Override

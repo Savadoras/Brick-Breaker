@@ -5,7 +5,7 @@ import java.awt.image.BufferStrategy;
 public class Game extends Canvas implements Runnable {
 
     private final double VER = 2.0;
-    private static int WIDTH = 800 , HEIGHT = 600;
+    private static int WIDTH = 896  , HEIGHT = 504;
     private boolean running = false;
     private String title = "BrickBreaker v" + VER;
     private Thread thread;
@@ -27,7 +27,7 @@ public class Game extends Canvas implements Runnable {
 
         for (int j = 0; j < 5; j++)
             for (int i = 0; i < WIDTH; i += 60) {
-                handler.addObject(new Brick(i, j * 15 + 30, 60, 15, ID.Brick, 3));
+                handler.addObject(new Brick(i, j * 15 + 30, 60, 15, ID.Brick, 2));
             }
 
     }
