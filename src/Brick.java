@@ -2,21 +2,21 @@ import java.awt.*;
 
 public class Brick extends GameObject {
 
-    private int width,height;
-    private float top,bottom,right,left;
+    private int width, height;
+    private float top, bottom, right, left;
     private int life;
 
-    public Brick(float x, float y,int width,int height, ID id,int life) {
+    public Brick(float x, float y, int width, int height, ID id, int life) {
         super(x, y, id);
 
-        this.width=width;
-        this.height=height;
-        this.life=life;
+        this.width = width;
+        this.height = height;
+        this.life = life;
 
-        top=y;
-        bottom=y+height;
-        left=x;
-        right=x+width;
+        top = y;
+        bottom = y + height;
+        left = x;
+        right = x + width;
     }
 
     @Override
@@ -26,7 +26,7 @@ public class Brick extends GameObject {
 
     @Override
     protected void render(Graphics g) {
-        switch (life){
+        switch (life) {
             case 1:
                 g.setColor(Color.GRAY);
                 break;
@@ -38,9 +38,9 @@ public class Brick extends GameObject {
                 break;
         }
 
-        g.fillRect((int)x,(int)y,(int)width,(int)height);
+        g.fillRect((int) x, (int) y, (int) width, (int) height);
         g.setColor(Color.DARK_GRAY);
-        g.drawRect((int)x,(int)y,(int)width,(int)height);
+        g.drawRect((int) x, (int) y, (int) width, (int) height);
     }
 
     public int getWidth() {

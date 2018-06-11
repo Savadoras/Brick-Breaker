@@ -1,42 +1,42 @@
 import java.awt.*;
 
-public class Player extends GameObject{
+public class Player extends GameObject {
 
-    private int width,height;
-    private float top,bottom,right,left;
+    private int width, height;
+    private float top, bottom, right, left;
 
-    Player(float x,float y,int width,int height,ID id){
-        super(x,y,id);
+    Player(float x, float y, int width, int height, ID id) {
+        super(x, y, id);
 
-        velX=velY=0;
+        velX = velY = 0;
 
-        this.width=width;
-        this.height=height;
+        this.width = width;
+        this.height = height;
 
-        top=y;
-        bottom=y+height;
-        left=x;
-        right=x+width;
+        top = y;
+        bottom = y + height;
+        left = x;
+        right = x + width;
     }
 
     @Override
     protected void tick() {
-        x+=velX;
-        y+=velY;
+        x += velX;
+        y += velY;
 
-        x=Game.clamp(x,0,Game.getWIDTH()-width);
+        x = Game.clamp(x, 0, Game.getWIDTH() - width);
 
-        top=y;
-        bottom=y+height;
-        left=x;
-        right=x+width;
+        top = y;
+        bottom = y + height;
+        left = x;
+        right = x + width;
 
     }
 
     @Override
     protected void render(Graphics g) {
         g.setColor(Color.DARK_GRAY);
-        g.fillRect((int)x,(int)y,width,height);
+        g.fillRect((int) x, (int) y, width, height);
     }
 
     public int getWidth() {
