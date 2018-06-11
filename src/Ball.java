@@ -40,7 +40,6 @@ public class Ball extends GameObject {
         x += velX;
         y += velY;
 
-
         if (x <= 0) {
             velX *= -1;
         } else if (x >= Game.getWIDTH() - 2 * radius) velX *= -1;
@@ -61,7 +60,6 @@ public class Ball extends GameObject {
     public int intersect(float left, float right, float top, float bottom, GameObject tempObject) {
         double sX = this.x + radius + this.velX;
         double sY = this.y + radius + this.velY;
-
 
         if (Math.pow(sX - left, 2) + Math.pow(sY - top, 2) <= Math.pow(radius, 2) && sX < left && sY < top && velY > 0 && velX > 0) {
             //kolizja z lewym gornym rogiem
@@ -108,7 +106,6 @@ public class Ball extends GameObject {
             velY *= -1;
             return 1;
         }
-
 
         return 0;
     }
