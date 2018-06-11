@@ -28,13 +28,13 @@ public class Brick extends GameObject {
     protected void render(Graphics g) {
         switch (life) {
             case 1:
-                g.setColor(Color.GRAY);
+                g.setColor(Color.YELLOW);
                 break;
             case 2:
-                g.setColor(Color.LIGHT_GRAY);
+                g.setColor(Color.MAGENTA);
                 break;
             case 3:
-                g.setColor(Color.WHITE);
+                g.setColor(Color.RED);
                 break;
         }
 
