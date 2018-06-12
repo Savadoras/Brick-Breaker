@@ -15,7 +15,7 @@ public class Game extends Canvas implements Runnable {
 
     public Game() {
         handler = new Handler();
-        this.hud= new Hud();
+        this.hud = new Hud(HEIGHT, WIDTH);
 
         this.addKeyListener(new KeyInput(handler));
         this.setFocusable(true);
@@ -28,7 +28,6 @@ public class Game extends Canvas implements Runnable {
 
         handler.addObject(new Player(WIDTH / 2 - 50, HEIGHT - 20, 120, 15, ID.Player));
         handler.addObject(new Ball(WIDTH / 2 - 5, HEIGHT - 41, 8, handler, ID.Ball));
-
 
 
         for (int j = 0; j < 5; j++)
@@ -103,11 +102,7 @@ public class Game extends Canvas implements Runnable {
         g.fillRect(WIDTH, 0, 50, HEIGHT);
         g.fillRect(0, HEIGHT, WIDTH + 50, 50);
 
-        //rysowanie tekstu
-        g.setColor(Color.BLUE);
-        g.setFont(new Font("Times", Font.BOLD, 20));
-        g.drawString("SCORE: ", WIDTH-125, 25);
-
+        hud.Update(bs);
         handler.render(g);
 
         g.dispose();
