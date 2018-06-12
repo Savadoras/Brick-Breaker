@@ -1,5 +1,8 @@
 import java.awt.*;
 
+/**
+ * Klasa związana z paletką.
+ */
 public class Player extends GameObject {
 
     public boolean pressL, pressR;
@@ -7,6 +10,14 @@ public class Player extends GameObject {
     private float top, bottom, right, left;
     private float a;
 
+    /**
+     * Konstruktor klasy Player.
+     * @param x Położenie początkowe paletki w osi X.
+     * @param y Położenie początkowe paletki w osi Y.
+     * @param width Wysokośc paletki.
+     * @param height Szerokośc paletki.
+     * @param id Identyfikator obiektu paletka.
+     */
     Player(float x, float y, int width, int height, ID id) {
         super(x, y, id);
         a = 0;
@@ -21,6 +32,9 @@ public class Player extends GameObject {
         right = x + width;
     }
 
+    /**
+     * metoda odpowiedzialna za przesuwanie paletki.
+     */
     @Override
     protected void tick() {
 
@@ -44,12 +58,20 @@ public class Player extends GameObject {
         right = x + width;
     }
 
+    /**
+     * metoda odpowiedzialna za wyswietlanie paletki.
+     * @param g Obiekt klasy graficznej.
+     */
     @Override
     protected void render(Graphics g) {
-        g.setColor(new Color(39, 70, 134));
+        g.setColor(new Color(0, 0, 0));
         g.fillRect((int) x, (int) y, width, height);
     }
 
+    /**
+     * Metoda obliczająca prędkośc paletki na podstawie przyspieszenia.
+     * @param a przyspieszenie paletki.
+     */
     private void acceleration(float a) {
 
 
@@ -69,18 +91,34 @@ public class Player extends GameObject {
 
     }
 
+    /**
+     * getter do gornej krawedzi paletki.
+     * @return
+     */
     public float getTop() {
         return top;
     }
 
+    /**
+     * getter do dolnej krawedzi paletki.
+     * @return
+     */
     public float getBottom() {
         return bottom;
     }
 
+    /**
+     * Getter do prawej krawedzi paletki.
+     * @return
+     */
     public float getRight() {
         return right;
     }
 
+    /**
+     * getter do lewej krawedzi paletki.
+     * @return Współrzę
+     */
     public float getLeft() {
         return left;
     }
