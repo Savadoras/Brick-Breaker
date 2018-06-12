@@ -17,8 +17,7 @@ public class Ball extends GameObject {
     @Override
     protected void tick() {
 
-        for (int j = 0; j < 30; j++) {
-
+        for(int j = 0;j < 30; j++){
             for (int i = 0; i < handler.object.size(); i++) {
                 GameObject tempObject = handler.object.get(i);
 
@@ -114,8 +113,6 @@ public class Ball extends GameObject {
                 velX = tempObject.getVelX();
             } else
                 velX *= -1;
-
-
             return 1;
         } else if (sX >= left && sX <= right && (sY + radius) >= top && (sY - radius) <= bottom) {
 
