@@ -2,17 +2,15 @@ import java.awt.*;
 import java.awt.image.BufferStrategy;
 
 public class Hud {
-    
-    static int state = 0;
+
+    public static int state = 0;
 
     private final int HEIGHT, WIDTH;
 
     public Hud(int height, int width) {
         this.HEIGHT = height;
         this.WIDTH = width;
-
     }
-
 
     public void Update(BufferStrategy bs) {
         Graphics g = bs.getDrawGraphics();
@@ -24,8 +22,8 @@ public class Hud {
                 g.drawString("PRESS SPACEBAR TO START! ", WIDTH - 650, HEIGHT / 2);
                 break;
             case 1:
-                g.setFont(new Font("Times", Font.BOLD, 15));
-                g.drawString("SCORE: ", WIDTH - 100, 25);
+                g.setFont(new Font("Times", Font.BOLD, 20));
+                g.drawString("SCORE: ", WIDTH - 120, 20);
                 break;
             case 2:
                 g.setFont(new Font("Times", Font.BOLD, 30));

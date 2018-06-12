@@ -3,13 +3,13 @@ import java.awt.image.BufferStrategy;
 
 public class Game extends Canvas implements Runnable {
 
-    private final double VER = 2.0;
+    public static int speedBallX = 5, speedBallY = -5, speedPlayerX = 10;
     private static int WIDTH = 896, HEIGHT = 504;
+    private final double VER = 4.0;
     private boolean running = false;
     private String title = "BrickBreaker v" + VER;
     private Thread thread;
     private Handler handler;
-
     private Hud hud;
     private int fps = 0;
     public static int speedBallX = 5, speedBallY = -5, speedPlayerX = 10;
@@ -39,6 +39,48 @@ public class Game extends Canvas implements Runnable {
             }
 
 
+    }
+
+    public static void main(String[] args) {
+        new Game();
+    }
+
+    public static float clamp(float val, float min, float max) {
+        if (val <= min) return min;
+        else if (val >= max) return max;
+        else return val;
+    }
+
+    public static int getWIDTH() {
+        return WIDTH;
+    }
+
+    public static int getHEIGHT() {
+        return HEIGHT;
+    }
+
+    public static int getSpeedBallX() {
+        return speedBallX;
+    }
+
+    public static void setSpeedBallX(int speedBallX) {
+        Game.speedBallX = speedBallX;
+    }
+
+    public static int getSpeedBallY() {
+        return speedBallY;
+    }
+
+    public static void setSpeedBallY(int speedBallY) {
+        Game.speedBallY = speedBallY;
+    }
+
+    public static int getSpeedPlayerX() {
+        return speedPlayerX;
+    }
+
+    public static void setSpeedPlayerX(int speedPlayerX) {
+        Game.speedPlayerX = speedPlayerX;
     }
 
     public synchronized void start() {
@@ -106,47 +148,5 @@ public class Game extends Canvas implements Runnable {
 
         g.dispose();
         bs.show();
-    }
-
-    public static void main(String[] args) {
-        new Game();
-    }
-
-    public static float clamp(float val, float min, float max) {
-        if (val <= min) return min;
-        else if (val >= max) return max;
-        else return val;
-    }
-
-    public static int getWIDTH() {
-        return WIDTH;
-    }
-
-    public static int getHEIGHT() {
-        return HEIGHT;
-    }
-
-    public static int getSpeedBallX() {
-        return speedBallX;
-    }
-
-    public static void setSpeedBallX(int speedBallX) {
-        Game.speedBallX = speedBallX;
-    }
-
-    public static int getSpeedBallY() {
-        return speedBallY;
-    }
-
-    public static void setSpeedBallY(int speedBallY) {
-        Game.speedBallY = speedBallY;
-    }
-
-    public static int getSpeedPlayerX() {
-        return speedPlayerX;
-    }
-
-    public static void setSpeedPlayerX(int speedPlayerX) {
-        Game.speedPlayerX = speedPlayerX;
     }
 }
