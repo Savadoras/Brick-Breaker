@@ -24,7 +24,10 @@ public class Ball extends GameObject {
 
                 if (tempObject.getId() == ID.Player) {
                     Player player = (Player) tempObject;
-                    intersect(player.getLeft() + player.getVelX(), player.getRight() + player.getVelX(), player.getTop(), player.getBottom(), tempObject);
+                    if (intersect(player.getLeft() + player.getVelX(), player.getRight() + player.getVelX(), player.getTop(), player.getBottom(), tempObject) == 1) {
+                        break;
+                    }
+
                 }
 
                 if (tempObject.getId() == ID.Brick) {
@@ -33,6 +36,9 @@ public class Ball extends GameObject {
                         if (brick.getLife() == 1) handler.object.remove(tempObject);
                         else
                             brick.setLife(brick.getLife() - 1);
+
+                      Hud.score++;
+                      break;
                     }
                 }
             }
@@ -50,7 +56,7 @@ public class Ball extends GameObject {
             if (y <= 0) {
                 y = 0;
                 velY *= -1;
-            } else if (y >= Game.getHEIGHT() - radius) {
+            } else if (y >= Game.getHEIGHT() - 20 - radius) {
                 // velY *= -1;
                 //  y=Game.getHEIGHT() - 2 * radius;
                 Hud.state = 2;
@@ -125,6 +131,15 @@ public class Ball extends GameObject {
                     velX = velX + player.getVelX() / 3;
                 else if (velX > 0)
                     velX = 9 * (Game.vel / 10);
+                else
+                    velX = -9 * (Game.vel / 10);
+                if (velY > 0) {
+                    velY = (-1) * (float) Math.sqrt(Math.pow(Game.vel, 2) - Math.pow(velX, 2));
+                } else velY = (float) Math.sqrt(Math.pow(Game.vel, 2) - Math.pow(velX, 2));
+                System.out.println("velX:" + velX + "  velY:" + velY + "  playerVelX:" + player.getVelX());
+                // }else velY*=(-1);
+            } else velY *= (-1);
+
                 else
                     velX = -9 * (Game.vel / 10);
                 if (velY > 0) {
