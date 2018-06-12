@@ -17,36 +17,47 @@ public class Ball extends GameObject {
     @Override
     protected void tick() {
 
-        for (int i = 0; i < handler.object.size(); i++) {
-            GameObject tempObject = handler.object.get(i);
+        for(int j=0;j<10;j++){
 
-            if (tempObject.getId() == ID.Player) {
-                Player player = (Player) tempObject;
-                intersect(player.getLeft() + player.getVelX(), player.getRight() + player.getVelX(), player.getTop(), player.getBottom(), tempObject);
-            }
+            for (int i = 0; i < handler.object.size(); i++) {
+                GameObject tempObject = handler.object.get(i);
 
-            if (tempObject.getId() == ID.Brick) {
-                Brick brick = (Brick) tempObject;
-                if (intersect(brick.getLeft(), brick.getRight(), brick.getTop(), brick.getBottom(), tempObject) == 1) {
-                    if (brick.getLife() == 1) handler.object.remove(tempObject);
-                    else
-                        brick.setLife(brick.getLife() - 1);
 
+                if (tempObject.getId() == ID.Player) {
+                    Player player = (Player) tempObject;
+                    intersect(player.getLeft() + player.getVelX(), player.getRight() + player.getVelX(), player.getTop(), player.getBottom(), tempObject);
+                }
+
+                if (tempObject.getId() == ID.Brick) {
+                    Brick brick = (Brick) tempObject;
+                    if (intersect(brick.getLeft(), brick.getRight(), brick.getTop(), brick.getBottom(), tempObject) == 1) {
+                        if (brick.getLife() == 1) handler.object.remove(tempObject);
+                        else
+                            brick.setLife(brick.getLife() - 1);
+
+                    }
                 }
             }
+
+            x += velX/10;
+            y += velY/10;
+
+            if (x<= 0) {
+                x=0;
+                velX *= -1;
+            } else if (x>= Game.getWIDTH() - 2 * radius){
+                velX *= -1;
+                x = Game.getWIDTH() - 2 * radius;
+            }
+            if (y <= 0) {
+                y=0;
+                velY *= -1;
+            } else if (y>= Game.getHEIGHT()-radius) {
+                // velY *= -1;
+                //  y=Game.getHEIGHT() - 2 * radius;
+                handler.object.remove(this);
+            }
         }
-
-        x += velX;
-        y += velY;
-
-        if (x <= 0) {
-            velX *= -1;
-        } else if (x >= Game.getWIDTH() - 2 * radius) velX *= -1;
-
-        if (y <= 0) {
-            velY *= -1;
-        } else if (y >= Game.getHEIGHT() - 2 * radius) velY *= -1;// handler.object.remove(this);
-
     }
 
     @Override
@@ -99,7 +110,12 @@ public class Ball extends GameObject {
             return 1;
         } else if (sY >= top && sY <= bottom && sX + radius >= left && sX - radius <= right) {
 
+            if(tempObject.getId()==ID.Player){
+                velX=tempObject.getVelX();
+            }else
             velX *= -1;
+
+
             return 1;
         } else if (sX >= left && sX <= right && (sY + radius) >= top && (sY - radius) <= bottom) { //to do
             velY *= -1;

@@ -19,16 +19,16 @@ public class KeyInput extends KeyAdapter {
             GameObject tempObject = handler.object.get(i);
 
             if (tempObject.getId() == ID.Player) {
-                if (key == KeyEvent.VK_LEFT) tempObject.setVelX(-10);
-                if (key == KeyEvent.VK_RIGHT) tempObject.setVelX(10);
+                if (key == KeyEvent.VK_LEFT) tempObject.setVelX(-Game.getSpeedPlayerX());
+                if (key == KeyEvent.VK_RIGHT) tempObject.setVelX(Game.getSpeedPlayerX());
             }
 
             if (tempObject.getId() == ID.Ball) {
                 Ball ball = (Ball) tempObject;
                 if (ball.getVelX() == 0 && ball.getVelY() == 0)
                     if (key == KeyEvent.VK_SPACE) {
-                        ball.setVelX(5);
-                        ball.setVelY(-5);
+                        ball.setVelX(Game.getSpeedBallX());
+                        ball.setVelY(Game.getSpeedBallY());
                     }
             }
         }
