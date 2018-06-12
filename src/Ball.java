@@ -120,8 +120,9 @@ public class Ball extends GameObject {
             if(tempObject.getId()==ID.Player){
                 Player player=(Player)tempObject;
                 //if(player.getVelX()!=0) {
-                    if (Math.abs(velX + player.getVelX()/6) <= 9*(Game.vel/10))
-                        velX = velX + player.getVelX()/6;
+                System.out.println("velX:" + velX + "  velY:" + velY + "  playerVelX:"+player.getVelX());
+                    if (Math.abs(velX + player.getVelX()/3) <= 9*(Game.vel/10))
+                        velX = velX + player.getVelX()/3;
                     else
                         if(velX>0)
                             velX = 9*(Game.vel/10);
