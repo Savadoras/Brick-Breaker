@@ -1,10 +1,18 @@
 import java.awt.*;
+import java.io.File;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 
 public class Brick extends GameObject {
 
     private int width, height;
     private float top, bottom, right, left;
     private int life;
+
+    private BufferedImage image,image2;
+
+
 
     public Brick(float x, float y, int width, int height, ID id, int life) {
         super(x, y, id);
@@ -17,6 +25,22 @@ public class Brick extends GameObject {
         bottom = y + height;
         left = x;
         right = x + width;
+        File imageFile = new File("brick.png");
+        try {
+            image = ImageIO.read(imageFile);
+        } catch (IOException e) {
+            System.err.println("Blad odczytu obrazka");
+            e.printStackTrace();
+        }
+        imageFile = new File("brick2.png");
+        try {
+            image2 = ImageIO.read(imageFile);
+        } catch (IOException e) {
+            System.err.println("Blad odczytu obrazka");
+            e.printStackTrace();
+        }
+
+
     }
 
     @Override
@@ -28,18 +52,37 @@ public class Brick extends GameObject {
         switch (life) {
             case 1:
                 g.setColor(new Color(241, 35, 36));
+                g.drawImage(image, (int)x, (int)y,null);
                 break;
             case 2:
                 g.setColor(new Color(156, 23, 28));
+                g.drawImage(image2, (int)x, (int)y,null);
                 break;
             case 3:
                 g.setColor(new Color(113, 9, 20));
                 break;
         }
 
-        g.fillRect((int) x, (int) y, width, height);
+       /* g.fillRect((int) x, (int) y, (int) width, (int) height);
         g.setColor(Color.WHITE);
-        g.drawRect((int) x, (int) y, width, height);
+        g.drawRect((int) x, (int) y, (int) width, (int) height);*/
+
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
     }
 
     public float getTop() {
