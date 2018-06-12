@@ -37,57 +37,25 @@ public class Brick extends GameObject {
                 break;
         }
 
-        g.fillRect((int) x, (int) y, (int) width, (int) height);
+        g.fillRect((int) x, (int) y, width, height);
         g.setColor(Color.WHITE);
-        g.drawRect((int) x, (int) y, (int) width, (int) height);
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
+        g.drawRect((int) x, (int) y, width, height);
     }
 
     public float getTop() {
         return top;
     }
 
-    public void setTop(float top) {
-        this.top = top;
-    }
-
     public float getBottom() {
         return bottom;
-    }
-
-    public void setBottom(float bottom) {
-        this.bottom = bottom;
     }
 
     public float getRight() {
         return right;
     }
 
-    public void setRight(float right) {
-        this.right = right;
-    }
-
     public float getLeft() {
         return left;
-    }
-
-    public void setLeft(float left) {
-        this.left = left;
     }
 
     public int getLife() {

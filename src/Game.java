@@ -3,43 +3,34 @@ import java.awt.image.BufferStrategy;
 
 public class Game extends Canvas implements Runnable {
 
-    public static int speedBallX = 5, speedBallY = -5, speedPlayerX = 10;
+    public static int speedBallX = 5;
+    public static int speedBallY = -5;
+    public static float vel = (float) Math.sqrt(Math.pow(speedBallY, 2) + Math.pow(speedBallY, 2));
     private static int WIDTH = 896, HEIGHT = 504;
     private final double VER = 4.0;
     private boolean running = false;
-    private String title = "BrickBreaker v" + VER;
     private Thread thread;
     private Handler handler;
     private Hud hud;
     private Spawn spawn;
     private int fps = 0;
-    public static float vel =(float) Math.sqrt(Math.pow(speedBallY,2)+Math.pow(speedBallY,2));
 
 
     public Game() {
         handler = new Handler();
         this.hud = new Hud(HEIGHT, WIDTH);
         spawn = new Spawn(handler);
-        this.addKeyListener(new KeyInput(handler,spawn));
+        this.addKeyListener(new KeyInput(handler, spawn));
         this.setFocusable(true);
 
         this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         this.setMaximumSize(new Dimension(WIDTH, HEIGHT));
         this.setMinimumSize(new Dimension(WIDTH, HEIGHT));
 
-        new Window(WIDTH, HEIGHT, title, this);
+        String title = "BrickBreaker v" + VER;
+        new Window(title, this);
 
-       /* handler.addObject(new Player(WIDTH / 2 - 50, HEIGHT - 20, 120, 15, ID.Player));
-        handler.addObject(new Ball(WIDTH / 2 - 5, HEIGHT - 41, 10, handler, ID.Ball));
-
-
-        for (int j = 0; j < 5; j++)
-            for (int i = 0; i < WIDTH; i += 60) {
-                handler.addObject(new Brick(i, j * 15 + 30, 60, 15, ID.Brick, 2));
-            }*/
-       spawn.tick();
-
-
+        spawn.tick();
     }
 
     public static void main(String[] args) {
@@ -64,24 +55,8 @@ public class Game extends Canvas implements Runnable {
         return speedBallX;
     }
 
-    public static void setSpeedBallX(int speedBallX) {
-        Game.speedBallX = speedBallX;
-    }
-
     public static int getSpeedBallY() {
         return speedBallY;
-    }
-
-    public static void setSpeedBallY(int speedBallY) {
-        Game.speedBallY = speedBallY;
-    }
-
-    public static int getSpeedPlayerX() {
-        return speedPlayerX;
-    }
-
-    public static void setSpeedPlayerX(int speedPlayerX) {
-        Game.speedPlayerX = speedPlayerX;
     }
 
     public synchronized void start() {

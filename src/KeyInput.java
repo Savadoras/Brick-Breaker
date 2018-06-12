@@ -49,7 +49,7 @@ public class KeyInput extends KeyAdapter {
 //                for (int i = 0; i < handler.object.size(); i++) {
 //                    GameObject tempObject = handler.object.get(i);
 //                    handler.removeObject(tempObject);
-                     handler.removeAllObjects();
+                handler.removeAllObjects();
 //                }
                 spawn.tick();
             }

@@ -1,5 +1,3 @@
-import java.awt.*;
-
 public class Spawn {
 
     private int level;
@@ -11,7 +9,6 @@ public class Spawn {
     }
 
     public void tick() {
-
 
         switch (level) {
             case 1:
