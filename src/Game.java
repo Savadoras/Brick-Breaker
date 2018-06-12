@@ -9,8 +9,11 @@ public class Game extends Canvas implements Runnable {
     private String title = "BrickBreaker v" + VER;
     private Thread thread;
     private Handler handler;
+
     private Hud hud;
     private int fps = 0;
+    public static int speedBallX = 5, speedBallY = -5, speedPlayerX = 10;
+
 
 
     public Game() {
@@ -27,7 +30,7 @@ public class Game extends Canvas implements Runnable {
         new Window(WIDTH, HEIGHT, title, this);
 
         handler.addObject(new Player(WIDTH / 2 - 50, HEIGHT - 20, 120, 15, ID.Player));
-        handler.addObject(new Ball(WIDTH / 2 - 5, HEIGHT - 41, 8, handler, ID.Ball));
+        handler.addObject(new Ball(WIDTH / 2 - 5, HEIGHT - 41, 10, handler, ID.Ball));
 
 
         for (int j = 0; j < 5; j++)
@@ -97,12 +100,8 @@ public class Game extends Canvas implements Runnable {
         g.setColor(Color.lightGray);
         g.fillRect(0, 0, WIDTH, HEIGHT);
 
-        //podłoga
-        g.setColor(Color.RED);
-        g.fillRect(WIDTH, 0, 50, HEIGHT);
-        g.fillRect(0, HEIGHT, WIDTH + 50, 50);
-
         hud.Update(bs);
+
         handler.render(g);
 
         g.dispose();
@@ -125,5 +124,29 @@ public class Game extends Canvas implements Runnable {
 
     public static int getHEIGHT() {
         return HEIGHT;
+    }
+
+    public static int getSpeedBallX() {
+        return speedBallX;
+    }
+
+    public static void setSpeedBallX(int speedBallX) {
+        Game.speedBallX = speedBallX;
+    }
+
+    public static int getSpeedBallY() {
+        return speedBallY;
+    }
+
+    public static void setSpeedBallY(int speedBallY) {
+        Game.speedBallY = speedBallY;
+    }
+
+    public static int getSpeedPlayerX() {
+        return speedPlayerX;
+    }
+
+    public static void setSpeedPlayerX(int speedPlayerX) {
+        Game.speedPlayerX = speedPlayerX;
     }
 }
