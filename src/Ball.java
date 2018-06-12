@@ -36,9 +36,8 @@ public class Ball extends GameObject {
                         if (brick.getLife() == 1) handler.object.remove(tempObject);
                         else
                             brick.setLife(brick.getLife() - 1);
-
-                      Hud.score++;
-                      break;
+                        Hud.score++;
+                        break;
                     }
                 }
             }
@@ -61,6 +60,7 @@ public class Ball extends GameObject {
                 //  y=Game.getHEIGHT() - 2 * radius;
                 Hud.state = 2;
                 handler.object.remove(this);
+
             }
         }
     }
@@ -140,17 +140,20 @@ public class Ball extends GameObject {
                 // }else velY*=(-1);
             } else velY *= (-1);
 
-                else
-                    velX = -9 * (Game.vel / 10);
-                if (velY > 0) {
-                    velY = (-1) * (float) Math.sqrt(Math.pow(Game.vel, 2) - Math.pow(velX, 2));
-                } else velY = (float) Math.sqrt(Math.pow(Game.vel, 2) - Math.pow(velX, 2));
-                System.out.println("velX:" + velX + "  velY:" + velY + "  playerVelX:" + player.getVelX());
-                // }else velY*=(-1);
-            } else velY *= (-1);
 
+           /* velX+=tempObject.getVelX();
+            if(Math.abs(velX)>(9/10*vel))
+                if(velX>0)
+                velX=9/10*vel;
+                else
+                    velX=-9/10*vel;
+                if(velY>0)
+                    velY=(-1)*(float) Math.sqrt(Math.pow(vel,2)-Math.pow(velX,2));
+                else
+                    velY=(float) Math.sqrt(Math.pow(vel,2)-Math.pow(velX,2));*/
             return 1;
         }
+
         return 0;
     }
 
