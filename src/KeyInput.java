@@ -45,16 +45,19 @@ public class KeyInput extends KeyAdapter {
             }
         if (key == KeyEvent.VK_SPACE) {
             if (Hud.state == 2) {
-
-//                for (int i = 0; i < handler.object.size(); i++) {
-//                    GameObject tempObject = handler.object.get(i);
-//                    handler.removeObject(tempObject);
-                     handler.removeAllObjects();
-//                }
+                handler.removeAllObjects();
                 spawn.tick();
             }
         }
+        if (key == KeyEvent.VK_SPACE) {
+            if (Hud.state == 3) {
+                handler.removeAllObjects();
+                spawn.tick();
+            }
+
+        }
     }
+
 
     @Override
     public void keyReleased(KeyEvent e) {

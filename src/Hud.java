@@ -29,6 +29,10 @@ public class Hud {
                 g.setFont(new Font("Times", Font.BOLD, 30));
                 g.drawString("GAME OVER, PRESS SPACEBAR TO RESTART! ", WIDTH - 780, HEIGHT / 2);
                 break;
+            case 3:
+                g.setFont(new Font("Times", Font.BOLD, 30));
+                g.drawString("GAME WON!!, PRESS SPACEBAR TO RESTART! ", WIDTH - 780, HEIGHT / 2);
+                break;
         }
 
     }
