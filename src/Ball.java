@@ -17,7 +17,7 @@ public class Ball extends GameObject {
     @Override
     protected void tick() {
 
-        for(int j=0;j<30;j++){
+        for (int j = 0; j < 30; j++) {
 
             for (int i = 0; i < handler.object.size(); i++) {
                 GameObject tempObject = handler.object.get(i);
@@ -39,20 +39,20 @@ public class Ball extends GameObject {
                 }
             }
 
-            x += velX/30;
-            y += velY/30;
+            x += velX / 30;
+            y += velY / 30;
 
-            if (x<= 0) {
-                x=0;
+            if (x <= 0) {
+                x = 0;
                 velX *= -1;
-            } else if (x>= Game.getWIDTH() - 2 * radius){
+            } else if (x >= Game.getWIDTH() - 2 * radius) {
                 velX *= -1;
                 x = Game.getWIDTH() - 2 * radius;
             }
             if (y <= 0) {
-                y=0;
+                y = 0;
                 velY *= -1;
-            } else if (y>= Game.getHEIGHT()-radius) {
+            } else if (y >= Game.getHEIGHT() - radius) {
                 // velY *= -1;
                 //  y=Game.getHEIGHT() - 2 * radius;
                 handler.object.remove(this);
@@ -62,7 +62,7 @@ public class Ball extends GameObject {
 
     @Override
     protected void render(Graphics g) {
-        g.setColor(Color.RED);
+        g.setColor(new Color(81, 87, 233));
         g.fillOval((int) x, (int) y, radius * 2, radius * 2);
     }
 
@@ -110,32 +110,31 @@ public class Ball extends GameObject {
             return 1;
         } else if (sY >= top && sY <= bottom && sX + radius >= left && sX - radius <= right) {
 
-            if(tempObject.getId()==ID.Player){
-                velX=tempObject.getVelX();
-            }else
-            velX *= -1;
+            if (tempObject.getId() == ID.Player) {
+                velX = tempObject.getVelX();
+            } else
+                velX *= -1;
 
 
             return 1;
         } else if (sX >= left && sX <= right && (sY + radius) >= top && (sY - radius) <= bottom) {
 
 
-            if(tempObject.getId()==ID.Player){
-                Player player=(Player)tempObject;
+            if (tempObject.getId() == ID.Player) {
+                Player player = (Player) tempObject;
                 //if(player.getVelX()!=0) {
-                    if (Math.abs(velX + player.getVelX()/6) <= 9*(Game.vel/10))
-                        velX = velX + player.getVelX()/6;
-                    else
-                        if(velX>0)
-                            velX = 9*(Game.vel/10);
-                        else
-                            velX = -9*(Game.vel/10);
-                    if (velY > 0) {
-                        velY = (-1) * (float) Math.sqrt(Math.pow(Game.vel, 2) - Math.pow(velX, 2));
-                    } else velY = (float) Math.sqrt(Math.pow(Game.vel, 2) - Math.pow(velX, 2));
-                    System.out.println("velX:" + velX + "  velY:" + velY + "  playerVelX:"+player.getVelX());
-               // }else velY*=(-1);
-            }else velY*=(-1);
+                if (Math.abs(velX + player.getVelX() / 6) <= 9 * (Game.vel / 10))
+                    velX = velX + player.getVelX() / 6;
+                else if (velX > 0)
+                    velX = 9 * (Game.vel / 10);
+                else
+                    velX = -9 * (Game.vel / 10);
+                if (velY > 0) {
+                    velY = (-1) * (float) Math.sqrt(Math.pow(Game.vel, 2) - Math.pow(velX, 2));
+                } else velY = (float) Math.sqrt(Math.pow(Game.vel, 2) - Math.pow(velX, 2));
+                System.out.println("velX:" + velX + "  velY:" + velY + "  playerVelX:" + player.getVelX());
+                // }else velY*=(-1);
+            } else velY *= (-1);
 
 
            /* velX+=tempObject.getVelX();

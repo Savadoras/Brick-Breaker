@@ -49,7 +49,7 @@ public class Player extends GameObject {
     @Override
     //ustawienia paletki
     protected void render(Graphics g) {
-        g.setColor(Color.GREEN);
+        g.setColor(new Color(39, 70, 134));
         g.fillRect((int) x, (int) y, width, height);
     }
 
