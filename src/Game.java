@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 
 public class Game extends Canvas implements Runnable {
@@ -10,11 +9,16 @@ public class Game extends Canvas implements Runnable {
     private String title = "BrickBreaker v" + VER;
     private Thread thread;
     private Handler handler;
+    private Hud hud;
+    private int fps = 0;
 
 
     public Game() {
         handler = new Handler();
+        this.hud= new Hud();
+
         this.addKeyListener(new KeyInput(handler));
+        this.setFocusable(true);
 
         this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         this.setMaximumSize(new Dimension(WIDTH, HEIGHT));
@@ -24,6 +28,7 @@ public class Game extends Canvas implements Runnable {
 
         handler.addObject(new Player(WIDTH / 2 - 50, HEIGHT - 20, 120, 15, ID.Player));
         handler.addObject(new Ball(WIDTH / 2 - 5, HEIGHT - 41, 8, handler, ID.Ball));
+
 
 
         for (int j = 0; j < 5; j++)
@@ -56,7 +61,6 @@ public class Game extends Canvas implements Runnable {
         double ns = 1000000000 / amountOfTicks;
         double delta = 0;
         long timer = System.currentTimeMillis();
-        int frames = 0;
         while (running) {
             long now = System.nanoTime();
             delta += (now - lastTime) / ns;
@@ -66,12 +70,12 @@ public class Game extends Canvas implements Runnable {
                 delta--;
             }
             if (running) render();
-            frames++;
+            fps++;
 
             if (System.currentTimeMillis() - timer > 1000) {
                 timer += 1000;
-                System.out.println("FPS: " + frames);
-                frames = 0;
+                System.out.println("FPS: " + fps);
+                fps = 0;
             }
         }
         stop();
@@ -84,7 +88,7 @@ public class Game extends Canvas implements Runnable {
     private void render() {
         BufferStrategy bs = this.getBufferStrategy();
         if (bs == null) {
-            this.createBufferStrategy(10);
+            this.createBufferStrategy(2);
             return;
         }
 
@@ -99,9 +103,10 @@ public class Game extends Canvas implements Runnable {
         g.fillRect(WIDTH, 0, 50, HEIGHT);
         g.fillRect(0, HEIGHT, WIDTH + 50, 50);
 
-        //próba wklejenia tekstu
-        g.setFont(new Font("TimesRoman", Font.ITALIC, 28));
-        g.drawString("abcdefeghijklmonopdkdkdkd", 80, 80);
+        //rysowanie tekstu
+        g.setColor(Color.BLUE);
+        g.setFont(new Font("Times", Font.BOLD, 20));
+        g.drawString("SCORE: ", WIDTH-125, 25);
 
         handler.render(g);
 
