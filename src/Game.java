@@ -47,11 +47,11 @@ public class Game extends Canvas implements Runnable {
     }
 
     /**
-     *
-     * @param val 
-     * @param min
-     * @param max
-     * @return
+     * Funkcja sprawdza polozenie pomiedzy zakresem wartosci
+     * @param val polozenie obiektu
+     * @param min wartosc minimalna
+     * @param max wartość maksymalna
+     * @return zwraca polozenie z zakresu min - max
      */
     public static float clamp(float val, float min, float max) {
         if (val <= min) return min;
@@ -59,28 +59,50 @@ public class Game extends Canvas implements Runnable {
         else return val;
     }
 
+    /**
+     * getter do pobierania szerokosci okna
+     * @return szerokosc okna
+     */
     public static int getWIDTH() {
         return WIDTH;
     }
 
+    /**
+     * getter do pobierania wysokosci okna
+     * @return wysokosc okna
+     */
     public static int getHEIGHT() {
         return HEIGHT;
     }
 
+    /**
+     * getter do pobierania  predkosci po osi X
+     * @return predkosc po osi X
+     */
     public static int getSpeedBallX() {
         return speedBallX;
     }
 
+    /**
+     * getter do pobierania predkosci po osi Y
+     * @return predkosc po osi Y
+     */
     public static int getSpeedBallY() {
         return speedBallY;
     }
 
+    /**
+     * metoda tworzaca wątek główny gry
+     */
     public synchronized void start() {
         thread = new Thread(this);
         thread.start();
         running = true;
     }
 
+    /**
+     * metoda kończąca wątek główny programu
+     */
     public synchronized void stop() {
         try {
             thread.join();
@@ -90,6 +112,9 @@ public class Game extends Canvas implements Runnable {
         }
     }
 
+    /**
+     * Główna metoda odpowiedzialna za wyświtlanie
+     */
     @Override
     public void run() {
         long lastTime = System.nanoTime();
@@ -117,11 +142,17 @@ public class Game extends Canvas implements Runnable {
         stop();
     }
 
+    /**
+     * Wrapper dla metody tick z klasy handler
+     */
     private void tick() {
         if (Hud.state != 2)
         handler.tick();
     }
 
+    /**
+     * Metoda odpowiedzialna za wyświetlanie obrazu
+     */
     private void render() {
         BufferStrategy bs = this.getBufferStrategy();
         if (bs == null) {

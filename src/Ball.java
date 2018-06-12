@@ -37,7 +37,7 @@ public class Ball extends GameObject {
                         else
                             brick.setLife(brick.getLife() - 1);
                         Hud.score++;
-                        if(Hud.score == 3* Spawn.numberOfBricks)
+                        if(Hud.score == 2* Spawn.numberOfBricks)
                         {
                             Hud.state = 3;
                             handler.object.remove(this);

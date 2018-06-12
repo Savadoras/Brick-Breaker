@@ -20,7 +20,8 @@ public class Spawn {
 
                 numberOfBricks = 0;
                 for (int j = 0; j < 5; j++)
-                    for (int i = 0; i < Game.getWIDTH(); i += 60) {
+                    for (int i = 0; i < Game.getWIDTH(); i += 60)
+                    {
                         handler.addObject(new Brick(i, j * 15 + 30, 60, 15, ID.Brick, 2));
                         numberOfBricks++;
                     }
