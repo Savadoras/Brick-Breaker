@@ -122,18 +122,20 @@ public class Ball extends GameObject {
             if (tempObject.getId() == ID.Player) {
                 Player player = (Player) tempObject;
                 //if(player.getVelX()!=0) {
-                if (Math.abs(velX + player.getVelX() / 6) <= 9 * (Game.vel / 10))
-                    velX = velX + player.getVelX() / 6;
-                else if (velX > 0)
-                    velX = 9 * (Game.vel / 10);
-                else
-                    velX = -9 * (Game.vel / 10);
-                if (velY > 0) {
-                    velY = (-1) * (float) Math.sqrt(Math.pow(Game.vel, 2) - Math.pow(velX, 2));
-                } else velY = (float) Math.sqrt(Math.pow(Game.vel, 2) - Math.pow(velX, 2));
-                System.out.println("velX:" + velX + "  velY:" + velY + "  playerVelX:" + player.getVelX());
-                // }else velY*=(-1);
-            } else velY *= (-1);
+                System.out.println("velX:" + velX + "  velY:" + velY + "  playerVelX:"+player.getVelX());
+                    if (Math.abs(velX + player.getVelX()/3) <= 9*(Game.vel/10))
+                        velX = velX + player.getVelX()/3;
+                    else
+                        if(velX>0)
+                            velX = 9*(Game.vel/10);
+                        else
+                            velX = -9*(Game.vel/10);
+                    if (velY > 0) {
+                        velY = (-1) * (float) Math.sqrt(Math.pow(Game.vel, 2) - Math.pow(velX, 2));
+                    } else velY = (float) Math.sqrt(Math.pow(Game.vel, 2) - Math.pow(velX, 2));
+                    System.out.println("velX:" + velX + "  velY:" + velY + "  playerVelX:"+player.getVelX());
+               // }else velY*=(-1);
+            }else velY*=(-1);
 
 
            /* velX+=tempObject.getVelX();
