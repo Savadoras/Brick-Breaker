@@ -17,7 +17,7 @@ public class Ball extends GameObject {
     @Override
     protected void tick() {
 
-        for(int j=0;j<10;j++){
+        for (int j = 0; j < 10; j++) {
 
             for (int i = 0; i < handler.object.size(); i++) {
                 GameObject tempObject = handler.object.get(i);
@@ -39,20 +39,20 @@ public class Ball extends GameObject {
                 }
             }
 
-            x += velX/10;
-            y += velY/10;
+            x += velX / 10;
+            y += velY / 10;
 
-            if (x<= 0) {
-                x=0;
+            if (x <= 0) {
+                x = 0;
                 velX *= -1;
-            } else if (x>= Game.getWIDTH() - 2 * radius){
+            } else if (x >= Game.getWIDTH() - 2 * radius) {
                 velX *= -1;
                 x = Game.getWIDTH() - 2 * radius;
             }
             if (y <= 0) {
-                y=0;
+                y = 0;
                 velY *= -1;
-            } else if (y>= Game.getHEIGHT()-radius) {
+            } else if (y >= Game.getHEIGHT() - radius) {
                 // velY *= -1;
                 //  y=Game.getHEIGHT() - 2 * radius;
                 handler.object.remove(this);
@@ -110,12 +110,10 @@ public class Ball extends GameObject {
             return 1;
         } else if (sY >= top && sY <= bottom && sX + radius >= left && sX - radius <= right) {
 
-            if(tempObject.getId()==ID.Player){
-                velX=tempObject.getVelX();
-            }else
-            velX *= -1;
-
-
+            if (tempObject.getId() == ID.Player) {
+                velX = tempObject.getVelX();
+            } else
+                velX *= -1;
             return 1;
         } else if (sX >= left && sX <= right && (sY + radius) >= top && (sY - radius) <= bottom) { //to do
             velY *= -1;
