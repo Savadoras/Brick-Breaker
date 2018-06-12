@@ -27,8 +27,11 @@ public class KeyInput extends KeyAdapter {
                 Ball ball = (Ball) tempObject;
                 if (ball.getVelX() == 0 && ball.getVelY() == 0)
                     if (key == KeyEvent.VK_SPACE) {
+
+                        Hud.state = 1;
                         ball.setVelX(Game.getSpeedBallX());
                         ball.setVelY(Game.getSpeedBallY());
+
                     }
             }
         }

@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
 
 public class Game extends Canvas implements Runnable {
@@ -10,12 +9,19 @@ public class Game extends Canvas implements Runnable {
     private String title = "BrickBreaker v" + VER;
     private Thread thread;
     private Handler handler;
+
+    private Hud hud;
+    private int fps = 0;
     public static int speedBallX = 5, speedBallY = -5, speedPlayerX = 10;
+
 
 
     public Game() {
         handler = new Handler();
+        this.hud = new Hud(HEIGHT, WIDTH);
+
         this.addKeyListener(new KeyInput(handler));
+        this.setFocusable(true);
 
         this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
         this.setMaximumSize(new Dimension(WIDTH, HEIGHT));
@@ -57,7 +63,6 @@ public class Game extends Canvas implements Runnable {
         double ns = 1000000000 / amountOfTicks;
         double delta = 0;
         long timer = System.currentTimeMillis();
-        int frames = 0;
         while (running) {
             long now = System.nanoTime();
             delta += (now - lastTime) / ns;
@@ -67,12 +72,12 @@ public class Game extends Canvas implements Runnable {
                 delta--;
             }
             if (running) render();
-            frames++;
+            fps++;
 
             if (System.currentTimeMillis() - timer > 1000) {
                 timer += 1000;
-                System.out.println("FPS: " + frames);
-                frames = 0;
+                System.out.println("FPS: " + fps);
+                fps = 0;
             }
         }
         stop();
@@ -85,7 +90,7 @@ public class Game extends Canvas implements Runnable {
     private void render() {
         BufferStrategy bs = this.getBufferStrategy();
         if (bs == null) {
-            this.createBufferStrategy(10);
+            this.createBufferStrategy(2);
             return;
         }
 
@@ -95,9 +100,7 @@ public class Game extends Canvas implements Runnable {
         g.setColor(Color.lightGray);
         g.fillRect(0, 0, WIDTH, HEIGHT);
 
-        //próba wklejenia tekstu
-        g.setFont(new Font("TimesRoman", Font.ITALIC, 28));
-        g.drawString("abcdefeghijklmonopdkdkdkd", 80, 80);
+        hud.Update(bs);
 
         handler.render(g);
 
