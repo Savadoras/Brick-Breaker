@@ -1,6 +1,9 @@
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 
+/**
+ *
+ */
 public class Game extends Canvas implements Runnable {
 
     public static int speedBallX = 5;
@@ -15,7 +18,9 @@ public class Game extends Canvas implements Runnable {
     private Spawn spawn;
     private int fps = 0;
 
-
+    /**
+     * Konstruktor klasy game
+     */
     public Game() {
         handler = new Handler();
         this.hud = new Hud(HEIGHT, WIDTH);
@@ -33,10 +38,21 @@ public class Game extends Canvas implements Runnable {
         spawn.tick();
     }
 
+    /**
+     * Funkcja main programu
+     * @param args Parametry wejściowe programu.
+     */
     public static void main(String[] args) {
         new Game();
     }
 
+    /**
+     *
+     * @param val 
+     * @param min
+     * @param max
+     * @return
+     */
     public static float clamp(float val, float min, float max) {
         if (val <= min) return min;
         else if (val >= max) return max;
