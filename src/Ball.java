@@ -5,6 +5,14 @@ public class Ball extends GameObject {
     private int radius;
     private Handler handler;
 
+    /**
+     * Konstruktor obiektu Ball
+     * @param x - wspolrzedna x
+     * @param y - wspolrzedna y
+     * @param radius - promien
+     * @param handler
+     * @param id - id pilki
+     */
     public Ball(float x, float y, int radius, Handler handler, ID id) {
         super(x, y, id);
 
@@ -15,6 +23,7 @@ public class Ball extends GameObject {
     }
 
     @Override
+
     protected void tick() {
 
         for (int j = 0; j < 30; j++) {
@@ -76,7 +85,15 @@ public class Ball extends GameObject {
         g.fillOval((int) x, (int) y, radius * 2, radius * 2);
     }
 
-
+    /**
+     *
+     * @param left
+     * @param right
+     * @param top
+     * @param bottom
+     * @param tempObject
+     * @return
+     */
     public int intersect(float left, float right, float top, float bottom, GameObject tempObject) {
         double sX = this.x + radius + this.velX;
         double sY = this.y + radius + this.velY;
