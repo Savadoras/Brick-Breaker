@@ -11,6 +11,7 @@ public class Game extends Canvas implements Runnable {
     private Thread thread;
     private Handler handler;
     private Hud hud;
+    private Spawn spawn;
     private int fps = 0;
     public static float vel =(float) Math.sqrt(Math.pow(speedBallY,2)+Math.pow(speedBallY,2));
 
@@ -18,8 +19,8 @@ public class Game extends Canvas implements Runnable {
     public Game() {
         handler = new Handler();
         this.hud = new Hud(HEIGHT, WIDTH);
-
-        this.addKeyListener(new KeyInput(handler));
+        spawn = new Spawn(handler);
+        this.addKeyListener(new KeyInput(handler,spawn));
         this.setFocusable(true);
 
         this.setPreferredSize(new Dimension(WIDTH, HEIGHT));
@@ -28,14 +29,15 @@ public class Game extends Canvas implements Runnable {
 
         new Window(WIDTH, HEIGHT, title, this);
 
-        handler.addObject(new Player(WIDTH / 2 - 50, HEIGHT - 20, 120, 15, ID.Player));
+       /* handler.addObject(new Player(WIDTH / 2 - 50, HEIGHT - 20, 120, 15, ID.Player));
         handler.addObject(new Ball(WIDTH / 2 - 5, HEIGHT - 41, 10, handler, ID.Ball));
 
 
         for (int j = 0; j < 5; j++)
             for (int i = 0; i < WIDTH; i += 60) {
                 handler.addObject(new Brick(i, j * 15 + 30, 60, 15, ID.Brick, 2));
-            }
+            }*/
+       spawn.tick();
 
 
     }

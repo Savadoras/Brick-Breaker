@@ -4,9 +4,12 @@ import java.awt.event.KeyEvent;
 public class KeyInput extends KeyAdapter {
 
     private Handler handler;
+    private Spawn spawn;
 
-    public KeyInput(Handler handler) {
+    public KeyInput(Handler handler,Spawn spawn) {
+
         this.handler = handler;
+        this.spawn = spawn;
     }
 
 
@@ -16,6 +19,7 @@ public class KeyInput extends KeyAdapter {
 
         int key = e.getKeyCode();
 
+        if(Hud.state!=2)
         for (int i = 0; i < handler.object.size(); i++) {
             GameObject tempObject = handler.object.get(i);
 
@@ -29,12 +33,24 @@ public class KeyInput extends KeyAdapter {
                 Ball ball = (Ball) tempObject;
                 if (ball.getVelX() == 0 && ball.getVelY() == 0)
                     if (key == KeyEvent.VK_SPACE) {
-
-                        Hud.state = 1;
-                        ball.setVelX(Game.getSpeedBallX());
-                        ball.setVelY(Game.getSpeedBallY());
-
+                        if(Hud.state==0) {
+                            Hud.state = 1;
+                            ball.setVelX(Game.getSpeedBallX());
+                            ball.setVelY(Game.getSpeedBallY());
+                        }
                     }
+            }
+
+
+        }
+        if(key == KeyEvent.VK_SPACE){
+            if(Hud.state==2){
+
+                for(int i=0;i<handler.object.size();i++){
+                    GameObject tempObject = handler.object.get(i);
+                    handler.removeObject(tempObject);
+                }
+                spawn.tick();
             }
         }
     }
