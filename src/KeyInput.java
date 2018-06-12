@@ -9,6 +9,7 @@ public class KeyInput extends KeyAdapter {
         this.handler = handler;
     }
 
+
     @Override
     public void keyPressed(KeyEvent e) {
         super.keyPressed(e);
@@ -19,8 +20,9 @@ public class KeyInput extends KeyAdapter {
             GameObject tempObject = handler.object.get(i);
 
             if (tempObject.getId() == ID.Player) {
-                if (key == KeyEvent.VK_LEFT) tempObject.setVelX(-Game.getSpeedPlayerX());
-                if (key == KeyEvent.VK_RIGHT) tempObject.setVelX(Game.getSpeedPlayerX());
+                Player player = (Player) tempObject;
+                if (key == KeyEvent.VK_LEFT) player.pressL = true;
+                if (key == KeyEvent.VK_RIGHT) player.pressR = true;
             }
 
             if (tempObject.getId() == ID.Ball) {
@@ -47,8 +49,9 @@ public class KeyInput extends KeyAdapter {
             GameObject tempObject = handler.object.get(i);
 
             if (tempObject.getId() == ID.Player) {
-                if (key == KeyEvent.VK_LEFT && tempObject.getVelX() < 0) tempObject.setVelX(0);
-                if (key == KeyEvent.VK_RIGHT && tempObject.getVelX() > 0) tempObject.setVelX(0);
+                Player player = (Player)tempObject;
+                if (key == KeyEvent.VK_LEFT ) player.pressL=false;//tempObject.setVelX(0);
+               if (key == KeyEvent.VK_RIGHT ) player.pressR=false;//tempObject.setVelX(0);
             }
         }
     }
