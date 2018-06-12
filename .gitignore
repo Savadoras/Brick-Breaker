@@ -25,4 +25,9 @@ hs_err_pid*
 *.iml
 *.class
 *.xml
+.idea\workspace.xml
+/.idea/workspace.xml
+*.iml
+*.xml
 .idea/workspace.xml
+Brick Breaker v2.iml

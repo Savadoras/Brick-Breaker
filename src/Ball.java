@@ -38,8 +38,8 @@ public class Ball extends GameObject {
                 }
             }
 
-            x += velX/30;
-            y += velY/30;
+            x += velX / 30;
+            y += velY / 30;
 
             if (x <= 0) {
                 x = 0;
@@ -54,14 +54,16 @@ public class Ball extends GameObject {
             } else if (y >= Game.getHEIGHT() - radius) {
                 // velY *= -1;
                 //  y=Game.getHEIGHT() - 2 * radius;
+                Hud.state = 2;
                 handler.object.remove(this);
+
             }
         }
     }
 
     @Override
     protected void render(Graphics g) {
-        g.setColor(Color.RED);
+        g.setColor(new Color(81, 87, 233));
         g.fillOval((int) x, (int) y, radius * 2, radius * 2);
     }
 
@@ -117,11 +119,12 @@ public class Ball extends GameObject {
         } else if (sX >= left && sX <= right && (sY + radius) >= top && (sY - radius) <= bottom) {
 
 
-            if(tempObject.getId()==ID.Player){
-                Player player=(Player)tempObject;
+            if (tempObject.getId() == ID.Player) {
+                Player player = (Player) tempObject;
                 //if(player.getVelX()!=0) {
-                    if (Math.abs(velX + player.getVelX()/6) <= 9*(Game.vel/10))
-                        velX = velX + player.getVelX()/6;
+                System.out.println("velX:" + velX + "  velY:" + velY + "  playerVelX:"+player.getVelX());
+                    if (Math.abs(velX + player.getVelX()/3) <= 9*(Game.vel/10))
+                        velX = velX + player.getVelX()/3;
                     else
                         if(velX>0)
                             velX = 9*(Game.vel/10);

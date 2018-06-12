@@ -4,9 +4,12 @@ import java.awt.event.KeyEvent;
 public class KeyInput extends KeyAdapter {
 
     private Handler handler;
+    private Spawn spawn;
 
-    public KeyInput(Handler handler) {
+    public KeyInput(Handler handler, Spawn spawn) {
+
         this.handler = handler;
+        this.spawn = spawn;
     }
 
 
@@ -16,25 +19,39 @@ public class KeyInput extends KeyAdapter {
 
         int key = e.getKeyCode();
 
-        for (int i = 0; i < handler.object.size(); i++) {
-            GameObject tempObject = handler.object.get(i);
+        if (Hud.state != 2)
+            for (int i = 0; i < handler.object.size(); i++) {
+                GameObject tempObject = handler.object.get(i);
 
-            if (tempObject.getId() == ID.Player) {
-                Player player = (Player) tempObject;
-                if (key == KeyEvent.VK_LEFT) player.pressL = true;
-                if (key == KeyEvent.VK_RIGHT) player.pressR = true;
+                if (tempObject.getId() == ID.Player) {
+                    Player player = (Player) tempObject;
+                    if (key == KeyEvent.VK_LEFT) player.pressL = true;
+                    if (key == KeyEvent.VK_RIGHT) player.pressR = true;
+                }
+
+                if (tempObject.getId() == ID.Ball) {
+                    Ball ball = (Ball) tempObject;
+                    if (ball.getVelX() == 0 && ball.getVelY() == 0)
+                        if (key == KeyEvent.VK_SPACE) {
+                            if (Hud.state == 0) {
+                                Hud.state = 1;
+                                ball.setVelX(Game.getSpeedBallX());
+                                ball.setVelY(Game.getSpeedBallY());
+                            }
+                        }
+                }
+
+
             }
+        if (key == KeyEvent.VK_SPACE) {
+            if (Hud.state == 2) {
 
-            if (tempObject.getId() == ID.Ball) {
-                Ball ball = (Ball) tempObject;
-                if (ball.getVelX() == 0 && ball.getVelY() == 0)
-                    if (key == KeyEvent.VK_SPACE) {
-
-                        Hud.state = 1;
-                        ball.setVelX(Game.getSpeedBallX());
-                        ball.setVelY(Game.getSpeedBallY());
-
-                    }
+//                for (int i = 0; i < handler.object.size(); i++) {
+//                    GameObject tempObject = handler.object.get(i);
+//                    handler.removeObject(tempObject);
+                     handler.removeAllObjects();
+//                }
+                spawn.tick();
             }
         }
     }
@@ -49,9 +66,9 @@ public class KeyInput extends KeyAdapter {
             GameObject tempObject = handler.object.get(i);
 
             if (tempObject.getId() == ID.Player) {
-                Player player = (Player)tempObject;
-                if (key == KeyEvent.VK_LEFT ) player.pressL=false;//tempObject.setVelX(0);
-               if (key == KeyEvent.VK_RIGHT ) player.pressR=false;//tempObject.setVelX(0);
+                Player player = (Player) tempObject;
+                if (key == KeyEvent.VK_LEFT) player.pressL = false;//tempObject.setVelX(0);
+                if (key == KeyEvent.VK_RIGHT) player.pressR = false;//tempObject.setVelX(0);
             }
         }
     }
