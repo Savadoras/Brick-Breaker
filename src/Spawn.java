@@ -12,7 +12,7 @@ public class Spawn {
 
     public void tick() {
 
-
+        Hud.score = 0;
         switch (level) {
             case 1:
                 handler.addObject(new Player(Game.getWIDTH() / 2 - 50, Game.getHEIGHT() - 20, 120, 15, ID.Player));

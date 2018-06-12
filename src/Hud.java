@@ -4,6 +4,7 @@ import java.awt.image.BufferStrategy;
 public class Hud {
 
     public static int state = 0;
+    public static int score = 0;
 
     private final int HEIGHT, WIDTH;
 
@@ -22,7 +23,7 @@ public class Hud {
                 break;
             case 1:
                 g.setFont(new Font("Times", Font.BOLD, 20));
-                g.drawString("SCORE: ", WIDTH - 120, 20);
+                g.drawString("SCORE: " + score, WIDTH - 120, 20);
                 break;
             case 2:
                 g.setFont(new Font("Times", Font.BOLD, 30));

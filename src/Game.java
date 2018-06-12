@@ -127,6 +127,7 @@ public class Game extends Canvas implements Runnable {
     }
 
     private void tick() {
+        if (Hud.state != 2)
         handler.tick();
     }
 
