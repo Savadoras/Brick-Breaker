@@ -4,12 +4,19 @@ public class Spawn {
     private Handler handler;
     public static int numberOfBricks;
 
+    /**
+     * konstruktor klasy Spawn
+     * @param handler opakowanie na wszystkie obiekty gry
+     */
     public Spawn(Handler handler) {
         this.handler = handler;
         level = 1;
         numberOfBricks = 0;
     }
 
+    /**
+     * metoda tworzaca nowe obiekty gry
+     */
     public void tick() {
 
         Hud.score = 0;

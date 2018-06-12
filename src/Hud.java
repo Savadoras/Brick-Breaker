@@ -1,5 +1,8 @@
 import java.awt.*;
 
+/**
+ * Klasa odpowiedzialna za obsługę interfejsu z użytkownikiem
+ */
 public class Hud {
 
     public static int state = 0;
@@ -7,11 +10,20 @@ public class Hud {
 
     private final int HEIGHT, WIDTH;
 
+    /**
+     * Konstruktor klasy Hud
+     * @param height wysokosc okna w ktorym działa gra
+     * @param width szerokosc okna w ktorym dziala gra
+     */
     public Hud(int height, int width) {
         this.HEIGHT = height;
         this.WIDTH = width;
     }
 
+    /**
+     * metoda odpowiedzialna za wyswietlnie poprawnego komunikatu
+     * @param g obiekt klasy odpowiedzialnej za wyswietlnie na ekranie
+     */
     public void Update(Graphics g) {
         g.setColor(Color.BLUE);
 
