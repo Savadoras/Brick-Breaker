@@ -17,7 +17,7 @@ public class Ball extends GameObject {
     @Override
     protected void tick() {
 
-        for(int j=0;j<10;j++){
+        for(int j=0;j<30;j++){
 
             for (int i = 0; i < handler.object.size(); i++) {
                 GameObject tempObject = handler.object.get(i);
@@ -39,8 +39,8 @@ public class Ball extends GameObject {
                 }
             }
 
-            x += velX/10;
-            y += velY/10;
+            x += velX/30;
+            y += velY/30;
 
             if (x<= 0) {
                 x=0;
@@ -117,8 +117,37 @@ public class Ball extends GameObject {
 
 
             return 1;
-        } else if (sX >= left && sX <= right && (sY + radius) >= top && (sY - radius) <= bottom) { //to do
-            velY *= -1;
+        } else if (sX >= left && sX <= right && (sY + radius) >= top && (sY - radius) <= bottom) {
+
+
+            if(tempObject.getId()==ID.Player){
+                Player player=(Player)tempObject;
+                //if(player.getVelX()!=0) {
+                    if (Math.abs(velX + player.getVelX()/6) <= 9*(Game.vel/10))
+                        velX = velX + player.getVelX()/6;
+                    else
+                        if(velX>0)
+                            velX = 9*(Game.vel/10);
+                        else
+                            velX = -9*(Game.vel/10);
+                    if (velY > 0) {
+                        velY = (-1) * (float) Math.sqrt(Math.pow(Game.vel, 2) - Math.pow(velX, 2));
+                    } else velY = (float) Math.sqrt(Math.pow(Game.vel, 2) - Math.pow(velX, 2));
+                    System.out.println("velX:" + velX + "  velY:" + velY + "  playerVelX:"+player.getVelX());
+               // }else velY*=(-1);
+            }else velY*=(-1);
+
+
+           /* velX+=tempObject.getVelX();
+            if(Math.abs(velX)>(9/10*vel))
+                if(velX>0)
+                velX=9/10*vel;
+                else
+                    velX=-9/10*vel;
+                if(velY>0)
+                    velY=(-1)*(float) Math.sqrt(Math.pow(vel,2)-Math.pow(velX,2));
+                else
+                    velY=(float) Math.sqrt(Math.pow(vel,2)-Math.pow(velX,2));*/
             return 1;
         }
 

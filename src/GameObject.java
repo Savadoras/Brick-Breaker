@@ -9,6 +9,8 @@ public abstract class GameObject {
         this.x = x;
         this.y = y;
         this.id = id;
+        this.velX=0;
+        this.velY=0;
     }
 
     protected abstract void tick();

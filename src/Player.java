@@ -4,12 +4,14 @@ public class Player extends GameObject {
 
     private int width, height;
     private float top, bottom, right, left;
+    private float a;
+    public boolean pressL,pressR;
 
     Player(float x, float y, int width, int height, ID id) {
         super(x, y, id);
-
+        a=0;
         velX = velY = 0;
-
+        pressL = pressR = false;
         this.width = width;
         this.height = height;
 
@@ -21,6 +23,18 @@ public class Player extends GameObject {
 
     @Override
     protected void tick() {
+
+        //System.out.println("L = "+pressL+" P = "+pressR);
+
+        if(pressL)acceleration((float)-0.8);
+        if(pressR)acceleration((float) 0.8);
+
+        if(pressR==false&pressL==false)
+        if(Math.abs(velX)>1) {
+            if (velX > 0) velX -= 1;
+            if (velX < 0) velX += 1;
+        }else velX=0;
+
         x += velX;
         y += velY;
 
@@ -37,6 +51,28 @@ public class Player extends GameObject {
     protected void render(Graphics g) {
         g.setColor(Color.GREEN);
         g.fillRect((int) x, (int) y, width, height);
+    }
+
+    public void acceleration(float a){
+
+
+        if(a>0&velX>=0){
+            if(velX<=13) velX += a;
+            else velX = 13;
+        }else
+        if(a<0&velX<=0){
+            if(velX>=-13) velX += a;
+            else velX = -13;
+        }else
+        if(a<0&velX>0){
+            if(velX>=-13) velX += 3*a;
+            else velX = -13;
+        }else
+        if(a>0&velX<0){
+            if(velX<=13) velX += 3*a;
+            else velX = 13;
+        }
+
     }
 
     public int getWidth() {
