@@ -1,5 +1,4 @@
 import java.awt.*;
-import java.awt.image.BufferStrategy;
 
 public class Hud {
 
