@@ -12,7 +12,6 @@ public class Game extends Canvas implements Runnable {
     private Handler handler;
     private Hud hud;
     private int fps = 0;
-    public static int speedBallX = 5, speedBallY = -5, speedPlayerX = 10;
     public static float vel =(float) Math.sqrt(Math.pow(speedBallY,2)+Math.pow(speedBallY,2));
 
 
