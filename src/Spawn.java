@@ -1,5 +1,3 @@
-import java.awt.*;
-
 public class Spawn {
 
     private int level;
