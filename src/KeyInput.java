@@ -21,7 +21,6 @@ public class KeyInput extends KeyAdapter {
             if (tempObject.getId() == ID.Player) {
                 if (key == KeyEvent.VK_LEFT) tempObject.setVelX(-10);
                 if (key == KeyEvent.VK_RIGHT) tempObject.setVelX(10);
-
             }
 
             if (tempObject.getId() == ID.Ball) {
@@ -33,8 +32,6 @@ public class KeyInput extends KeyAdapter {
                     }
             }
         }
-
-
     }
 
     @Override
@@ -49,9 +46,7 @@ public class KeyInput extends KeyAdapter {
             if (tempObject.getId() == ID.Player) {
                 if (key == KeyEvent.VK_LEFT && tempObject.getVelX() < 0) tempObject.setVelX(0);
                 if (key == KeyEvent.VK_RIGHT && tempObject.getVelX() > 0) tempObject.setVelX(0);
-
             }
-
         }
     }
 }

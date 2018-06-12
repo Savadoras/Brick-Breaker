@@ -5,7 +5,7 @@ import java.awt.image.BufferStrategy;
 public class Game extends Canvas implements Runnable {
 
     private final double VER = 2.0;
-    private static int WIDTH = 896  , HEIGHT = 504;
+    private static int WIDTH = 896, HEIGHT = 504;
     private boolean running = false;
     private String title = "BrickBreaker v" + VER;
     private Thread thread;
@@ -23,12 +23,14 @@ public class Game extends Canvas implements Runnable {
         new Window(WIDTH, HEIGHT, title, this);
 
         handler.addObject(new Player(WIDTH / 2 - 50, HEIGHT - 20, 120, 15, ID.Player));
-        handler.addObject(new Ball(WIDTH / 2 - 5, HEIGHT - 41, 10, handler, ID.Ball));
+        handler.addObject(new Ball(WIDTH / 2 - 5, HEIGHT - 41, 8, handler, ID.Ball));
+
 
         for (int j = 0; j < 5; j++)
             for (int i = 0; i < WIDTH; i += 60) {
                 handler.addObject(new Brick(i, j * 15 + 30, 60, 15, ID.Brick, 2));
             }
+
 
     }
 
@@ -82,18 +84,24 @@ public class Game extends Canvas implements Runnable {
     private void render() {
         BufferStrategy bs = this.getBufferStrategy();
         if (bs == null) {
-            this.createBufferStrategy(3);
+            this.createBufferStrategy(10);
             return;
         }
 
         Graphics g = bs.getDrawGraphics();
 
-        g.setColor(Color.GRAY);
+        //tło
+        g.setColor(Color.lightGray);
         g.fillRect(0, 0, WIDTH, HEIGHT);
 
+        //podłoga
         g.setColor(Color.RED);
         g.fillRect(WIDTH, 0, 50, HEIGHT);
         g.fillRect(0, HEIGHT, WIDTH + 50, 50);
+
+        //próba wklejenia tekstu
+        g.setFont(new Font("TimesRoman", Font.ITALIC, 28));
+        g.drawString("abcdefeghijklmonopdkdkdkd", 80, 80);
 
         handler.render(g);
 
@@ -108,9 +116,7 @@ public class Game extends Canvas implements Runnable {
     public static float clamp(float val, float min, float max) {
         if (val <= min) return min;
         else if (val >= max) return max;
-        else
-            return val;
-
+        else return val;
     }
 
     public static int getWIDTH() {

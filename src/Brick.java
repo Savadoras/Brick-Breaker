@@ -21,7 +21,6 @@ public class Brick extends GameObject {
 
     @Override
     protected void tick() {
-
     }
 
     @Override
@@ -39,7 +38,7 @@ public class Brick extends GameObject {
         }
 
         g.fillRect((int) x, (int) y, (int) width, (int) height);
-        g.setColor(Color.DARK_GRAY);
+        g.setColor(Color.WHITE);
         g.drawRect((int) x, (int) y, (int) width, (int) height);
     }
 

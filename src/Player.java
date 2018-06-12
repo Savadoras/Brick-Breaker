@@ -30,12 +30,12 @@ public class Player extends GameObject {
         bottom = y + height;
         left = x;
         right = x + width;
-
     }
 
     @Override
+    //ustawienia paletki
     protected void render(Graphics g) {
-        g.setColor(Color.DARK_GRAY);
+        g.setColor(Color.GREEN);
         g.fillRect((int) x, (int) y, width, height);
     }
 

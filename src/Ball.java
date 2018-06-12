@@ -51,7 +51,7 @@ public class Ball extends GameObject {
 
     @Override
     protected void render(Graphics g) {
-        g.setColor(Color.cyan);
+        g.setColor(Color.RED);
         g.fillOval((int) x, (int) y, radius * 2, radius * 2);
     }
 
