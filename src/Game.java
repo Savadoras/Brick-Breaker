@@ -141,9 +141,10 @@ public class Game extends Canvas implements Runnable {
         g.setColor(Color.lightGray);
         g.fillRect(0, 0, WIDTH, HEIGHT);
 
-        hud.Update(bs);
 
         handler.render(g);
+        hud.Update(g);
+
 
         g.dispose();
         bs.show();

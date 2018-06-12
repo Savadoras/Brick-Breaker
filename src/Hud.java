@@ -12,8 +12,7 @@ public class Hud {
         this.WIDTH = width;
     }
 
-    public void Update(BufferStrategy bs) {
-        Graphics g = bs.getDrawGraphics();
+    public void Update(Graphics g) {
         g.setColor(Color.BLUE);
 
         switch (state) {
@@ -27,14 +26,10 @@ public class Hud {
                 break;
             case 2:
                 g.setFont(new Font("Times", Font.BOLD, 30));
-                g.drawString("GAME OVER, PRESS SPACEBAR TO RETART! ", WIDTH - 650, HEIGHT / 2);
+                g.drawString("GAME OVER, PRESS SPACEBAR TO RETART! ", WIDTH - 780, HEIGHT / 2);
                 break;
         }
 
     }
 
-
-    public void setState(int state) {
-        this.state = state;
-    }
 }

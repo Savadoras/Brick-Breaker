@@ -54,7 +54,9 @@ public class Ball extends GameObject {
             } else if (y >= Game.getHEIGHT() - radius) {
                 // velY *= -1;
                 //  y=Game.getHEIGHT() - 2 * radius;
+                Hud.state = 2;
                 handler.object.remove(this);
+
             }
         }
     }
