@@ -22,7 +22,7 @@ public class Game extends Canvas implements Runnable {
      */
     public static float vel = (float) Math.sqrt(Math.pow(speedBallY, 2) + Math.pow(speedBallY, 2));
     private static int WIDTH = 900, HEIGHT = 504;
-    private final double VER = 4.0;
+    private final double VER = 3.8;
     private boolean running = false;
     private Thread thread;
     private Handler handler;
@@ -46,18 +46,17 @@ public class Game extends Canvas implements Runnable {
         this.setMaximumSize(new Dimension(WIDTH, HEIGHT));
         this.setMinimumSize(new Dimension(WIDTH, HEIGHT));
 
-        String title = "BrickBreaker v" + VER;
-        new Window(title, this);
-
-        spawn.tick();
-
-        File imageFile = new File("tlo.png");
         try {
-            image = ImageIO.read(imageFile);
+            image = ImageIO.read(this.getClass().getResource("background.png"));
         } catch (IOException e) {
             System.err.println("Blad odczytu obrazka");
             e.printStackTrace();
         }
+
+        spawn.tick();
+
+        String title = "BrickBreaker v" + VER;
+        new Window(title, this);
     }
 
     /**

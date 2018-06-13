@@ -40,9 +40,8 @@ public class Player extends GameObject {
         left = x;
         right = x + width;
 
-        File imageFile = new File("Player.png");
         try {
-            image = ImageIO.read(imageFile);
+            image = ImageIO.read(this.getClass().getResource("player.png"));
         } catch (IOException e) {
             System.err.println("Blad odczytu obrazka");
             e.printStackTrace();

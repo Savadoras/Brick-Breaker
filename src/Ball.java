@@ -27,9 +27,8 @@ public class Ball extends GameObject {
 
         velX = velY = 0;
 
-        File imageFile = new File("Ball.png");
         try {
-            image = ImageIO.read(imageFile);
+            image = ImageIO.read(this.getClass().getResource("ball.png"));
         } catch (IOException e) {
             System.err.println("Blad odczytu obrazka");
             e.printStackTrace();
