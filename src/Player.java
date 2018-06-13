@@ -96,7 +96,7 @@ public class Player extends GameObject {
 
     /**
      * getter do gornej krawedzi paletki.
-     * @return
+     * @return Współrzędna Y górnej krawędzi.
      */
     public float getTop() {
         return top;
@@ -104,7 +104,7 @@ public class Player extends GameObject {
 
     /**
      * getter do dolnej krawedzi paletki.
-     * @return
+     * @return Współrzędna Y dolnej krawędzi.
      */
     public float getBottom() {
         return bottom;
@@ -112,7 +112,7 @@ public class Player extends GameObject {
 
     /**
      * Getter do prawej krawedzi paletki.
-     * @return
+     * @return Współrzędna X prawej krawędzi.
      */
     public float getRight() {
         return right;
@@ -120,7 +120,7 @@ public class Player extends GameObject {
 
     /**
      * getter do lewej krawedzi paletki.
-     * @return Współrzę
+     * @return Współrzędna X lewej krawędzi.
      */
     public float getLeft() {
         return left;
