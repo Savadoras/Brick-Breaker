@@ -1,8 +1,16 @@
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Klasa odpowiedzialna za tworzenie okna
+ */
 public class Window extends Canvas {
 
+    /**
+     *  Konstruktor klasy Window
+     * @param title tytul okna
+     * @param game referencja na obiekt klasy Game
+     */
     public Window(String title, Game game) {
         JFrame frame = new JFrame(title);
 

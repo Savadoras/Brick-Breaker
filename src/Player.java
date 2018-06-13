@@ -80,9 +80,12 @@ public class Player extends GameObject {
      */
     @Override
     protected void render(Graphics g) {
+
+
         g.setColor(new Color(0, 0, 0));
         g.fillRect((int) x, (int) y, width, height);
         g.drawImage(image, (int)x, (int)y,null);
+
     }
 
     /**

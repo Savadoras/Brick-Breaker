@@ -1,9 +1,11 @@
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 
+/**
+ * Klasa tworzaca pilke w grze
+ */
 public class Ball extends GameObject {
 
     private int radius;
@@ -101,13 +103,13 @@ public class Ball extends GameObject {
     }
 
     /**
-     *
-     * @param left
-     * @param right
-     * @param top
-     * @param bottom
-     * @param tempObject
-     * @return
+     * Metoda odpowiedzialna z kolizje pilki z innymi elementami w grze
+     * @param left wspolzedne lewej krawedzi
+     * @param right wspolzedne prawej krawedzi
+     * @param top wspolzedne gornej krawendzi
+     * @param bottom wspolzendne dolnej krawedzi
+     * @param tempObject referencja na obiekt z ktorym pilka koliduje
+     * @return zwraca 1 kiedy nastapi kolizja z obiektem w przeciwnym wypadku 0
      */
     public int intersect(float left, float right, float top, float bottom, GameObject tempObject) {
         double sX = this.x + radius + this.velX;
@@ -162,7 +164,6 @@ public class Ball extends GameObject {
 
             if (tempObject.getId() == ID.Player) {
                 Player player = (Player) tempObject;
-                //if(player.getVelX()!=0) {
                 if (Math.abs(velX + player.getVelX() / 3) <= 9 * (Game.vel / 10))
                     velX = velX + player.getVelX() / 3;
                 else if (velX > 0)
@@ -172,7 +173,6 @@ public class Ball extends GameObject {
                 if (velY > 0) {
                     velY = (-1) * (float) Math.sqrt(Math.pow(Game.vel, 2) - Math.pow(velX, 2));
                 } else velY = (float) Math.sqrt(Math.pow(Game.vel, 2) - Math.pow(velX, 2));
-                // }else velY*=(-1);
             } else velY *= (-1);
 
             return 1;

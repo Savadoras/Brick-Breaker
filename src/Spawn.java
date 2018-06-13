@@ -1,3 +1,6 @@
+/**
+ * Klasa odpowiedzialna za tworzenie obiekow gry
+ */
 public class Spawn {
 
     private int level;

@@ -13,7 +13,15 @@ public class Brick extends GameObject {
 
     private BufferedImage image,image2;
 
-
+    /**
+     *  Konstruktor klasy Brick
+     * @param x polozenie cegly w osi x
+     * @param y polozenie cegly w osi y
+     * @param width szerokosc cegly
+     * @param height wysokosc cegly
+     * @param id id obiektu
+     * @param life zycie cegly
+     */
 
     public Brick(float x, float y, int width, int height, ID id, int life) {
         super(x, y, id);
@@ -50,52 +58,41 @@ public class Brick extends GameObject {
     protected void render(Graphics g) {
         switch (life) {
             case 1:
-                g.setColor(new Color(241, 35, 36));
                 g.drawImage(image, (int)x, (int)y,null);
                 break;
             case 2:
-                g.setColor(new Color(156, 23, 28));
                 g.drawImage(image2, (int)x, (int)y,null);
                 break;
-            case 3:
-                g.setColor(new Color(113, 9, 20));
-                break;
+
         }
-
-       /* g.fillRect((int) x, (int) y, (int) width, (int) height);
-        g.setColor(Color.WHITE);
-        g.drawRect((int) x, (int) y, (int) width, (int) height);*/
-
     }
 
-    public int getWidth() {
-        return width;
-    }
 
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    public int getHeight() {
-        return height;
-    }
-
-    public void setHeight(int height) {
-        this.height = height;
-    }
-
+    /**
+     * getter do gornej krawedzi cegly.
+     * @return Wspolrzedna Y gornej krawedzi.
+     */
     public float getTop() {
         return top;
     }
-
+    /**
+     * getter do dolnej krawedzi cegly.
+     * @return Wspolrzedna Y dolnej krawedzi.
+     */
     public float getBottom() {
         return bottom;
     }
-
+    /**
+     * Getter do prawej krawedzi cegly.
+     * @return Wspolrzedna X prawej krawedzi.
+     */
     public float getRight() {
         return right;
     }
-
+    /**
+     * getter do lewej krawedzi cegly.
+     * @return Wspolrzedna X lewej krawedzi.
+     */
     public float getLeft() {
         return left;
     }
