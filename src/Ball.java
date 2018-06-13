@@ -113,7 +113,7 @@ public class Ball extends GameObject {
         double sX = this.x + radius + this.velX;
         double sY = this.y + radius + this.velY;
 
-        if (Math.pow(sX - left, 2) + Math.pow(sY - top, 2) <= Math.pow(radius, 2) && sX < left && sY < top && velY > 0 && velX > 0) {
+        if (Math.pow(sX - left, 2) + Math.pow(sY - top, 2) <= Math.pow(radius, 2) && sX < left && sY < top) {
             //kolizja z lewym gornym rogiem
             double a = (left - sX) / (top - sY);
             double nX = -velX;
@@ -122,7 +122,7 @@ public class Ball extends GameObject {
             velY = (float) ((2 * a) / (1 + Math.pow(a, 2)) * nX - (1 - Math.pow(a, 2)) / (1 + Math.pow(a, 2)) * nY);
 
             return 1;
-        } else if (Math.pow(sX - right, 2) + Math.pow(sY - top, 2) <= Math.pow(radius, 2) && sX > right && sY < top && velY > 0 && velX < 0) {
+        } else if (Math.pow(sX - right, 2) + Math.pow(sY - top, 2) <= Math.pow(radius, 2) && sX > right && sY < top ) {
             //kolizja z prawym gornym rogiem
             double a = (right - sX) / (top - sY);
             double nX = -velX;
@@ -131,7 +131,7 @@ public class Ball extends GameObject {
             velY = (float) ((2 * a) / (1 + Math.pow(a, 2)) * nX - (1 - Math.pow(a, 2)) / (1 + Math.pow(a, 2)) * nY);
 
             return 1;
-        } else if (Math.pow(sX - left, 2) + Math.pow(sY - top, 2) <= Math.pow(radius, 2) && sX < left && sY > bottom && velY < 0 && velX > 0) {
+        } else if (Math.pow(sX - left, 2) + Math.pow(sY - top, 2) <= Math.pow(radius, 2) && sX < left && sY > bottom ) {
             //kolizja z lewym dolnym rogiem
             double a = (left - sX) / (bottom - sY);
             double nX = -velX;
@@ -141,7 +141,7 @@ public class Ball extends GameObject {
             velY = (float) ((2 * a) / (1 + Math.pow(a, 2)) * nX - (1 - Math.pow(a, 2)) / (1 + Math.pow(a, 2)) * nY);
 
             return 1;
-        } else if (Math.pow(sX - right, 2) + Math.pow(sY - top, 2) <= Math.pow(radius, 2) && sX > right && sY > bottom && velY < 0 && velX < 0) {
+        } else if (Math.pow(sX - right, 2) + Math.pow(sY - top, 2) <= Math.pow(radius, 2) && sX > right && sY > bottom) {
             //kolizja z prawym dolnym rogiem
             double a = (right - sX) / (bottom - sY);
             double nX = -velX;
@@ -163,7 +163,6 @@ public class Ball extends GameObject {
             if (tempObject.getId() == ID.Player) {
                 Player player = (Player) tempObject;
                 //if(player.getVelX()!=0) {
-                System.out.println("velX:" + velX + "  velY:" + velY + "  playerVelX:" + player.getVelX());
                 if (Math.abs(velX + player.getVelX() / 3) <= 9 * (Game.vel / 10))
                     velX = velX + player.getVelX() / 3;
                 else if (velX > 0)
@@ -173,7 +172,6 @@ public class Ball extends GameObject {
                 if (velY > 0) {
                     velY = (-1) * (float) Math.sqrt(Math.pow(Game.vel, 2) - Math.pow(velX, 2));
                 } else velY = (float) Math.sqrt(Math.pow(Game.vel, 2) - Math.pow(velX, 2));
-                System.out.println("velX:" + velX + "  velY:" + velY + "  playerVelX:" + player.getVelX());
                 // }else velY*=(-1);
             } else velY *= (-1);
 
