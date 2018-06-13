@@ -64,7 +64,6 @@ public class KeyInput extends KeyAdapter {
                 handler.removeAllObjects();
                 spawn.tick();
             }
-
         }
     }
 
