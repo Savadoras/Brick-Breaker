@@ -1,15 +1,27 @@
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 /**
- *
+ *Glowna klasa programu.
  */
 public class Game extends Canvas implements Runnable {
-
+    /**
+     * Predkosc ruchu w poziomie
+     */
     public static int speedBallX = 5;
+    /**
+     * Predkosc ruchu w pionie
+     */
     public static int speedBallY = -5;
+    /**
+     * Dlugosc wektora ruchu.
+     */
     public static float vel = (float) Math.sqrt(Math.pow(speedBallY, 2) + Math.pow(speedBallY, 2));
-    private static int WIDTH = 896, HEIGHT = 504;
+    private static int WIDTH = 900, HEIGHT = 504;
     private final double VER = 4.0;
     private boolean running = false;
     private Thread thread;
@@ -17,6 +29,8 @@ public class Game extends Canvas implements Runnable {
     private Hud hud;
     private Spawn spawn;
     private int fps = 0;
+
+    private BufferedImage image;
 
     /**
      * Konstruktor klasy game
@@ -36,11 +50,19 @@ public class Game extends Canvas implements Runnable {
         new Window(title, this);
 
         spawn.tick();
+
+        File imageFile = new File("tlo.png");
+        try {
+            image = ImageIO.read(imageFile);
+        } catch (IOException e) {
+            System.err.println("Blad odczytu obrazka");
+            e.printStackTrace();
+        }
     }
 
     /**
      * Funkcja main programu
-     * @param args Parametry wejściowe programu.
+     * @param args Parametry wejsciowe programu.
      */
     public static void main(String[] args) {
         new Game();
@@ -50,7 +72,7 @@ public class Game extends Canvas implements Runnable {
      * Funkcja sprawdza polozenie pomiedzy zakresem wartosci
      * @param val polozenie obiektu
      * @param min wartosc minimalna
-     * @param max wartość maksymalna
+     * @param max wartosc maksymalna
      * @return zwraca polozenie z zakresu min - max
      */
     public static float clamp(float val, float min, float max) {
@@ -92,7 +114,7 @@ public class Game extends Canvas implements Runnable {
     }
 
     /**
-     * metoda tworzaca wątek główny gry
+     * metoda tworzaca watek glowny gry
      */
     public synchronized void start() {
         thread = new Thread(this);
@@ -101,7 +123,7 @@ public class Game extends Canvas implements Runnable {
     }
 
     /**
-     * metoda kończąca wątek główny programu
+     * metoda kończaca watek glowny programu
      */
     public synchronized void stop() {
         try {
@@ -113,7 +135,7 @@ public class Game extends Canvas implements Runnable {
     }
 
     /**
-     * Główna metoda odpowiedzialna za wyświtlanie
+     * Glowna metoda odpowiedzialna za wyswitlanie
      */
     @Override
     public void run() {
@@ -151,7 +173,7 @@ public class Game extends Canvas implements Runnable {
     }
 
     /**
-     * Metoda odpowiedzialna za wyświetlanie obrazu
+     * Metoda odpowiedzialna za wyswietlanie obrazu
      */
     private void render() {
         BufferStrategy bs = this.getBufferStrategy();
@@ -163,8 +185,10 @@ public class Game extends Canvas implements Runnable {
         Graphics g = bs.getDrawGraphics();
 
         //tło
-        g.setColor(Color.lightGray);
-        g.fillRect(0, 0, WIDTH, HEIGHT);
+        //g.setColor(Color.lightGray);
+        //g.fillRect(0, 0, WIDTH, HEIGHT);
+        g.drawImage(image, 0, 0,null);
+
 
 
         handler.render(g);

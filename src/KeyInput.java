@@ -1,18 +1,29 @@
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
+/**
+ * Klasa odpowiedzialna za odczytywanie uzycia klawiatury.
+ */
 public class KeyInput extends KeyAdapter {
 
     private Handler handler;
     private Spawn spawn;
 
+    /**
+     * Konstruktor klasy KeyInput.
+     * @param handler Schowek obiektow gry.
+     * @param spawn Obiekt tworzacy nowe obiekty gry.
+     */
     public KeyInput(Handler handler, Spawn spawn) {
 
         this.handler = handler;
         this.spawn = spawn;
     }
 
-
+    /**
+     * Metoda wczytujaca wcisniecie klawisza.
+     * @param e Event klawisza.
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         super.keyPressed(e);
@@ -58,7 +69,10 @@ public class KeyInput extends KeyAdapter {
         }
     }
 
-
+    /**
+     * Metoda wczytujaca puszczenie klawisza.
+     * @param e Event klawisza.
+     */
     @Override
     public void keyReleased(KeyEvent e) {
         super.keyReleased(e);

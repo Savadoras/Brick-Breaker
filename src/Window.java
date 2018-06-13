@@ -9,7 +9,7 @@ public class Window extends Canvas {
         frame.add(game);
         frame.pack();
 
-        //ustawienie własności okna z grą
+        //ustawienie wlasnosci okna z gra
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);

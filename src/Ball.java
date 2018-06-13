@@ -1,9 +1,15 @@
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class Ball extends GameObject {
 
     private int radius;
     private Handler handler;
+
+    private BufferedImage image;
 
     /**
      * Konstruktor obiektu Ball
@@ -20,6 +26,14 @@ public class Ball extends GameObject {
         this.radius = radius;
 
         velX = velY = 0;
+
+        File imageFile = new File("Ball.png");
+        try {
+            image = ImageIO.read(imageFile);
+        } catch (IOException e) {
+            System.err.println("Blad odczytu obrazka");
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -49,6 +63,7 @@ public class Ball extends GameObject {
                         if(Hud.score == 2* Spawn.numberOfBricks)
                         {
                             Hud.state = 3;
+                            Hud.score = 0;
                             handler.object.remove(this);
                         }
                         break;
@@ -83,6 +98,7 @@ public class Ball extends GameObject {
     protected void render(Graphics g) {
         g.setColor(new Color(81, 87, 233));
         g.fillOval((int) x, (int) y, radius * 2, radius * 2);
+        g.drawImage(image, (int)x, (int)y,null);
     }
 
     /**

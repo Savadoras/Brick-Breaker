@@ -1,18 +1,24 @@
 import java.awt.*;
 
 /**
- * Klasa odpowiedzialna za obsługę interfejsu z użytkownikiem
+ * Klasa odpowiedzialna za obsluge interfejsu z uzytkownikiem
  */
 public class Hud {
 
+    /**
+     * Stan gry w jakim obecnie sie znajdujemy.
+     */
     public static int state = 0;
+    /**
+     * Ilosc zdobytych punktow.
+     */
     public static int score = 0;
 
     private final int HEIGHT, WIDTH;
 
     /**
      * Konstruktor klasy Hud
-     * @param height wysokosc okna w ktorym działa gra
+     * @param height wysokosc okna w ktorym dziala gra
      * @param width szerokosc okna w ktorym dziala gra
      */
     public Hud(int height, int width) {
@@ -25,7 +31,7 @@ public class Hud {
      * @param g obiekt klasy odpowiedzialnej za wyswietlnie na ekranie
      */
     public void Update(Graphics g) {
-        g.setColor(Color.BLUE);
+        g.setColor(Color.GRAY);
 
         switch (state) {
             case 0:
