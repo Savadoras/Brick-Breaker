@@ -52,7 +52,6 @@ public class KeyInput extends KeyAdapter {
                         }
                 }
 
-
             }
         if (key == KeyEvent.VK_SPACE) {
             if (Hud.state == 2) {
@@ -79,8 +78,8 @@ public class KeyInput extends KeyAdapter {
 
         int key = e.getKeyCode();
 
-        for (int i = 0; i < handler.object.size(); i++) {
-            GameObject tempObject = handler.object.get(i);
+        //zmieniono pętlę na foreach
+        for (GameObject tempObject: handler.object) {
 
             if (tempObject.getId() == ID.Player) {
                 Player player = (Player) tempObject;
