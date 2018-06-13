@@ -1,12 +1,12 @@
 import java.awt.*;
 
 /**
- * Klasa związana z paletką.
+ * Klasa zwiazana z paletka.
  */
 public class Player extends GameObject {
 
     /**
-     * Zmienne mówiące o tym czy klawisz jest wciśnięty.
+     * Zmienne mowiace o tym czy klawisz jest wcisniety.
      */
     public boolean pressL, pressR;
     private int width, height;
@@ -15,10 +15,10 @@ public class Player extends GameObject {
 
     /**
      * Konstruktor klasy Player.
-     * @param x Położenie początkowe paletki w osi X.
-     * @param y Położenie początkowe paletki w osi Y.
-     * @param width Wysokośc paletki.
-     * @param height Szerokośc paletki.
+     * @param x Polozenie poczatkowe paletki w osi X.
+     * @param y Polozenie poczatkowe paletki w osi Y.
+     * @param width Wysokosc paletki.
+     * @param height Szerokosc paletki.
      * @param id Identyfikator obiektu paletka.
      */
     Player(float x, float y, int width, int height, ID id) {
@@ -72,7 +72,7 @@ public class Player extends GameObject {
     }
 
     /**
-     * Metoda obliczająca prędkośc paletki na podstawie przyspieszenia.
+     * Metoda obliczajaca predkosc paletki na podstawie przyspieszenia.
      * @param a przyspieszenie paletki.
      */
     private void acceleration(float a) {
@@ -96,7 +96,7 @@ public class Player extends GameObject {
 
     /**
      * getter do gornej krawedzi paletki.
-     * @return Współrzędna Y górnej krawędzi.
+     * @return Wspolrzedna Y gornej krawedzi.
      */
     public float getTop() {
         return top;
@@ -104,7 +104,7 @@ public class Player extends GameObject {
 
     /**
      * getter do dolnej krawedzi paletki.
-     * @return Współrzędna Y dolnej krawędzi.
+     * @return Wspolrzedna Y dolnej krawedzi.
      */
     public float getBottom() {
         return bottom;
@@ -112,7 +112,7 @@ public class Player extends GameObject {
 
     /**
      * Getter do prawej krawedzi paletki.
-     * @return Współrzędna X prawej krawędzi.
+     * @return Wspolrzedna X prawej krawedzi.
      */
     public float getRight() {
         return right;
@@ -120,7 +120,7 @@ public class Player extends GameObject {
 
     /**
      * getter do lewej krawedzi paletki.
-     * @return Współrzędna X lewej krawędzi.
+     * @return Wspolrzedna X lewej krawedzi.
      */
     public float getLeft() {
         return left;

@@ -2,7 +2,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
 /**
- * Klasa odpowiedzialna za odczytywanie użycia klawiatury.
+ * Klasa odpowiedzialna za odczytywanie uzycia klawiatury.
  */
 public class KeyInput extends KeyAdapter {
 
@@ -21,7 +21,7 @@ public class KeyInput extends KeyAdapter {
     }
 
     /**
-     * Metoda wczytująca wciśnięcie klawisza.
+     * Metoda wczytujaca wcisniecie klawisza.
      * @param e Event klawisza.
      */
     @Override
@@ -70,7 +70,7 @@ public class KeyInput extends KeyAdapter {
     }
 
     /**
-     * Metoda wczytująca puszczenie klawisza.
+     * Metoda wczytujaca puszczenie klawisza.
      * @param e Event klawisza.
      */
     @Override

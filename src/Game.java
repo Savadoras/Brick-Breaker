@@ -2,7 +2,7 @@ import java.awt.*;
 import java.awt.image.BufferStrategy;
 
 /**
- *Główna klasa programu.
+ *Glowna klasa programu.
  */
 public class Game extends Canvas implements Runnable {
     /**
@@ -10,11 +10,11 @@ public class Game extends Canvas implements Runnable {
      */
     public static int speedBallX = 5;
     /**
-     * Prędkosc ruchu w pionie
+     * Predkosc ruchu w pionie
      */
     public static int speedBallY = -5;
     /**
-     * Długość wektora ruchu.
+     * Dlugosc wektora ruchu.
      */
     public static float vel = (float) Math.sqrt(Math.pow(speedBallY, 2) + Math.pow(speedBallY, 2));
     private static int WIDTH = 896, HEIGHT = 504;
@@ -48,7 +48,7 @@ public class Game extends Canvas implements Runnable {
 
     /**
      * Funkcja main programu
-     * @param args Parametry wejściowe programu.
+     * @param args Parametry wejsciowe programu.
      */
     public static void main(String[] args) {
         new Game();
@@ -58,7 +58,7 @@ public class Game extends Canvas implements Runnable {
      * Funkcja sprawdza polozenie pomiedzy zakresem wartosci
      * @param val polozenie obiektu
      * @param min wartosc minimalna
-     * @param max wartość maksymalna
+     * @param max wartosc maksymalna
      * @return zwraca polozenie z zakresu min - max
      */
     public static float clamp(float val, float min, float max) {
@@ -100,7 +100,7 @@ public class Game extends Canvas implements Runnable {
     }
 
     /**
-     * metoda tworzaca wątek główny gry
+     * metoda tworzaca watek glowny gry
      */
     public synchronized void start() {
         thread = new Thread(this);
@@ -109,7 +109,7 @@ public class Game extends Canvas implements Runnable {
     }
 
     /**
-     * metoda kończąca wątek główny programu
+     * metoda kończaca watek glowny programu
      */
     public synchronized void stop() {
         try {
@@ -121,7 +121,7 @@ public class Game extends Canvas implements Runnable {
     }
 
     /**
-     * Główna metoda odpowiedzialna za wyświtlanie
+     * Glowna metoda odpowiedzialna za wyswitlanie
      */
     @Override
     public void run() {
@@ -159,7 +159,7 @@ public class Game extends Canvas implements Runnable {
     }
 
     /**
-     * Metoda odpowiedzialna za wyświetlanie obrazu
+     * Metoda odpowiedzialna za wyswietlanie obrazu
      */
     private void render() {
         BufferStrategy bs = this.getBufferStrategy();
@@ -170,7 +170,7 @@ public class Game extends Canvas implements Runnable {
 
         Graphics g = bs.getDrawGraphics();
 
-        //tło
+        //tlo
         g.setColor(Color.lightGray);
         g.fillRect(0, 0, WIDTH, HEIGHT);
 

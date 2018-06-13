@@ -1,16 +1,16 @@
 import java.awt.*;
 
 /**
- * Klasa odpowiedzialna za obsługę interfejsu z użytkownikiem
+ * Klasa odpowiedzialna za obsluge interfejsu z uzytkownikiem
  */
 public class Hud {
 
     /**
-     * Stan gry w jakim obecnie się znajdujemy.
+     * Stan gry w jakim obecnie sie znajdujemy.
      */
     public static int state = 0;
     /**
-     * Ilość zdobytych punktów.
+     * Ilosc zdobytych punktow.
      */
     public static int score = 0;
 
@@ -18,7 +18,7 @@ public class Hud {
 
     /**
      * Konstruktor klasy Hud
-     * @param height wysokosc okna w ktorym działa gra
+     * @param height wysokosc okna w ktorym dziala gra
      * @param width szerokosc okna w ktorym dziala gra
      */
     public Hud(int height, int width) {
