@@ -2,6 +2,7 @@ import java.awt.*;
 import java.io.File;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.net.URL;
 import javax.imageio.ImageIO;
 
 public class Brick extends GameObject {
@@ -25,16 +26,14 @@ public class Brick extends GameObject {
         bottom = y + height;
         left = x;
         right = x + width;
-        File imageFile = new File("brick.png");
         try {
-            image = ImageIO.read(imageFile);
+            image = ImageIO.read(this.getClass().getResource("brick1.png"));
         } catch (IOException e) {
             System.err.println("Blad odczytu obrazka");
             e.printStackTrace();
         }
-        imageFile = new File("brick2.png");
         try {
-            image2 = ImageIO.read(imageFile);
+            image2 = ImageIO.read(this.getClass().getResource("brick2.png"));
         } catch (IOException e) {
             System.err.println("Blad odczytu obrazka");
             e.printStackTrace();
