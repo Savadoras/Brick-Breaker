@@ -1,5 +1,9 @@
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 /**
  *Glowna klasa programu.
@@ -17,7 +21,7 @@ public class Game extends Canvas implements Runnable {
      * Dlugosc wektora ruchu.
      */
     public static float vel = (float) Math.sqrt(Math.pow(speedBallY, 2) + Math.pow(speedBallY, 2));
-    private static int WIDTH = 896, HEIGHT = 504;
+    private static int WIDTH = 900, HEIGHT = 504;
     private final double VER = 4.0;
     private boolean running = false;
     private Thread thread;
@@ -25,6 +29,8 @@ public class Game extends Canvas implements Runnable {
     private Hud hud;
     private Spawn spawn;
     private int fps = 0;
+
+    private BufferedImage image;
 
     /**
      * Konstruktor klasy game
@@ -44,6 +50,14 @@ public class Game extends Canvas implements Runnable {
         new Window(title, this);
 
         spawn.tick();
+
+        File imageFile = new File("tlo.png");
+        try {
+            image = ImageIO.read(imageFile);
+        } catch (IOException e) {
+            System.err.println("Blad odczytu obrazka");
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -170,9 +184,11 @@ public class Game extends Canvas implements Runnable {
 
         Graphics g = bs.getDrawGraphics();
 
-        //tlo
-        g.setColor(Color.lightGray);
-        g.fillRect(0, 0, WIDTH, HEIGHT);
+        //tło
+        //g.setColor(Color.lightGray);
+        //g.fillRect(0, 0, WIDTH, HEIGHT);
+        g.drawImage(image, 0, 0,null);
+
 
 
         handler.render(g);

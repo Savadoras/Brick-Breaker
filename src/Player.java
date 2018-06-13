@@ -1,4 +1,8 @@
+import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 /**
  * Klasa zwiazana z paletka.
@@ -12,6 +16,8 @@ public class Player extends GameObject {
     private int width, height;
     private float top, bottom, right, left;
     private float a;
+
+    private BufferedImage image;
 
     /**
      * Konstruktor klasy Player.
@@ -33,6 +39,14 @@ public class Player extends GameObject {
         bottom = y + height;
         left = x;
         right = x + width;
+
+        File imageFile = new File("Player.png");
+        try {
+            image = ImageIO.read(imageFile);
+        } catch (IOException e) {
+            System.err.println("Blad odczytu obrazka");
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -69,6 +83,7 @@ public class Player extends GameObject {
     protected void render(Graphics g) {
         g.setColor(new Color(0, 0, 0));
         g.fillRect((int) x, (int) y, width, height);
+        g.drawImage(image, (int)x, (int)y,null);
     }
 
     /**

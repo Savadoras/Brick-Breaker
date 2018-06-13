@@ -31,7 +31,7 @@ public class Hud {
      * @param g obiekt klasy odpowiedzialnej za wyswietlnie na ekranie
      */
     public void Update(Graphics g) {
-        g.setColor(Color.BLUE);
+        g.setColor(Color.GRAY);
 
         switch (state) {
             case 0:
