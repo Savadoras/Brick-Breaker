@@ -2,12 +2,20 @@ import java.awt.*;
 import java.awt.image.BufferStrategy;
 
 /**
- *
+ *Główna klasa programu.
  */
 public class Game extends Canvas implements Runnable {
-
+    /**
+     * Predkosc ruchu w poziomie
+     */
     public static int speedBallX = 5;
+    /**
+     * Prędkosc ruchu w pionie
+     */
     public static int speedBallY = -5;
+    /**
+     * Długość wektora ruchu.
+     */
     public static float vel = (float) Math.sqrt(Math.pow(speedBallY, 2) + Math.pow(speedBallY, 2));
     private static int WIDTH = 896, HEIGHT = 504;
     private final double VER = 4.0;

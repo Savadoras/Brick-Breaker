@@ -5,6 +5,9 @@ import java.awt.*;
  */
 public class Player extends GameObject {
 
+    /**
+     * Zmienne mówiące o tym czy klawisz jest wciśnięty.
+     */
     public boolean pressL, pressR;
     private int width, height;
     private float top, bottom, right, left;

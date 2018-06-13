@@ -5,7 +5,13 @@ import java.awt.*;
  */
 public class Hud {
 
+    /**
+     * Stan gry w jakim obecnie się znajdujemy.
+     */
     public static int state = 0;
+    /**
+     * Ilość zdobytych punktów.
+     */
     public static int score = 0;
 
     private final int HEIGHT, WIDTH;
